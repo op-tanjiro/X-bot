@@ -52,7 +52,7 @@ smd({
       caption: Config.caption
     });
   } catch (_0x17be15) {
-    return await _0x2e919e.error(_0x17be15 + "\n\n command: coffe", _0x17be15, "*_Didn't get any results, Sorry!_*");
+    return await _0x2e919e.error(_0x17be15 + "\n\n command: trump", _0x17be15, "*_Didn't get any results, Sorry!_*");
   }
 });
 smd({
@@ -85,7 +85,7 @@ smd({
       caption: Config.caption
     });
   } catch (_0x5cbdac) {
-    return await _0x196aaf.error(_0x5cbdac + "\n\n command: coffe", _0x5cbdac, "*_Didn't get any results, Sorry!_*");
+    return await _0x196aaf.error(_0x5cbdac + "\n\n command: mia", _0x5cbdac, "*_Didn't get any results, Sorry!_*");
   }
 });
 smd({
@@ -118,7 +118,7 @@ smd({
       caption: Config.caption
     });
   } catch (_0x53b0a7) {
-    return await _0x3e4e5f.error(_0x53b0a7 + "\n\n command: coffe", _0x53b0a7, "*_Didn't get any results, Sorry!_*");
+    return await _0x3e4e5f.error(_0x53b0a7 + "\n\n command: jhoni", _0x53b0a7, "*_Didn't get any results, Sorry!_*");
   }
 });
 smd({
@@ -150,7 +150,7 @@ smd({
       caption: Config.caption
     });
   } catch (_0x443f32) {
-    return await _0x102280.error(_0x443f32 + "\n\n command: coffe", _0x443f32, "*_Didn't get any results, Sorry!_*");
+    return await _0x102280.error(_0x443f32 + "\n\n command: elon", _0x443f32, "*_Didn't get any results, Sorry!_*");
   }
 });
 smd({
@@ -183,7 +183,7 @@ smd({
       caption: Config.caption
     });
   } catch (_0x117a0a) {
-    return await _0x27b8ff.error(_0x117a0a + "\n\n command: coffe", _0x117a0a, "*_Didn't get any results, Sorry!_*");
+    return await _0x27b8ff.error(_0x117a0a + "\n\n command: mark", _0x117a0a, "*_Didn't get any results, Sorry!_*");
   }
 });
 smd({
