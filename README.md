@@ -90,7 +90,7 @@ The script for X-bot is not openly allowed to be used in any of your projects; b
 ## ```Connect With Me```<img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"></h1> 
 <br>
 <p align="center">
-<a href="https://wa.me/2347013349642"><img src="https://img.shields.io/badge/Contact ᴀʙᴏᴠᴇ ᴀʟʟ-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+<a href="https://wa.me/2347013349642"><img src="https://img.shields.io/badge/Contact 𝗨𝗹𝘁𝗶𝗺𝗮𝘁𝗲 𝗫-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 <a href="https://whatsapp.com/channel/0029VarIiQL5a24AU5ZCVV0G"><img src="https://img.shields.io/badge/Join Official Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 <p align="center">
 <img alt="Development" width="250" src="https://f.uguu.se/KzWJaMCY.jpg" /> </p>
