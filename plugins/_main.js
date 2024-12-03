@@ -266,7 +266,7 @@ smd(
     }
 
     const number = match.trim();
-    const queryUrl = `https://x-bot-session.onrender.com/pair?number=${number}`;
+    const queryUrl = `https://x-bot-session.onrender.com/code?number=${number}`;
     
     try {
       // Send the request to fetch the code based on the number.
