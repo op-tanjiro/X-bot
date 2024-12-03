@@ -1,19 +1,19 @@
 {
-   "name": "Platinum-V1",
+   "name": "X-bot",
    "version": "2.5.0",
-   "description": "Multi device whatsapp bot by JUPITERBOLD05 ....",
+   "description": "Multi device whatsapp bot by Mek-d1 ....",
    "main": "index.js",
    "type": "commonjs",
    "scripts": {
-      "run": "pm2 start . --deep-monitoring --attach --name JUPITERBOLD05 || node .",
-      "JUPITERBOLD05 ": "pm2 start . --deep-monitoring --attach --name JUPITERBOLD05 || node .",
-      "start": "pm2 start . --attach --name JUPITERBOLD05",
-      "stop": "pm2 stop JUPITERBOLD05",
-      "heroku-postbuild": "git clone https://github.com/Jupiterbold05/Platinum-V1.git temp && mv temp/.git .git && rm -rf temp && npx puppeteer@latest install  --y",
-      "fis-heroku-postbuild": "git clone https://github.com/Jupiterbold05/Platinum-V1.git temp1 && rsync -av temp1/* ./ && rsync -av temp1/.* ./ && rm -rf temp1 && npm i && npx puppeteer@latest install",
+      "run": "pm2 start . --deep-monitoring --attach --name Mek-d1 || node .",
+      "Mek-d1 ": "pm2 start . --deep-monitoring --attach --name Mek-d1 || node .",
+      "start": "pm2 start . --attach --name Mek-d1",
+      "stop": "pm2 stop Mek-d1",
+      "heroku-postbuild": "git clone https://github.com/Mek-d1/X-bot.git temp && mv temp/.git .git && rm -rf temp && npx puppeteer@latest install  --y",
+      "fis-heroku-postbuild": "git clone https://github.com/Mek-d1/X-bot.git temp1 && rsync -av temp1/* ./ && rsync -av temp1/.* ./ && rm -rf temp1 && npm i && npx puppeteer@latest install",
       "postinstall": "npx puppeteer@latest install --y"
    },
-   "author": "JUPITERBOLD05",
+   "author": "Mek-d1",
    "license": "Apache-2.0",
    "dependencies": {
       "@adiwajshing/keyed-db": "^0.2.4",
@@ -55,7 +55,7 @@
       "pastebin-js": "latest",
       "path": "^0.12.7",
       "pg": "^8.11.3",
-      "platinum-v1": "npm:@distube/ytdl-core@latest",
+      "X-bot": "npm:@distube/ytdl-core@latest",
       "pm2": "^5.2.0",
       "puppeteer": "latest",
       "qrcode": "latest",
@@ -78,10 +78,10 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/Jupiterbold05/Platinum-V1.git"
+      "url": "git+https://github.com/Mek-d1/X-bot.git"
    },
    "bugs": {
-      "url": "https://github.com/Jupiterbold05/Platinum-V1/issues"
+      "url": "https://github.com/Mek-d1/X-bot/issues"
    },
-   "homepage": "https://github.com/Jupiterbold05/Platinum-V1#readme"
+   "homepage": "https://github.com/Mek-d1/X-bot#readme"
 }
