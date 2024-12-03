@@ -37,7 +37,7 @@ smd({
     if (!_0x3211d9) {
       return await _0x2e919e.send("*provide text!*");
     }
-    const _0x1fe1f4 = "./plugins/meme.say/trump.png";
+    const _0x1fe1f4 = "./plugins/meme.say/trumSay.png";
     const _0x6eae84 = "./temp/trump.png";
     const _0x37de91 = 70;
     const _0x562e1c = 150;
