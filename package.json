@@ -21,7 +21,7 @@
       "@whiskeysockets/baileys": "6.6.0",
       "acrcloud": "^1.4.0",
       "anime-character-random": "latest",
-      "aptoide-scraper": "^1.0.1",
+      "aptoide-scraper": "latest",
       "async-g-i-s": "^1.4.0",
       "axios": "^0.24.0",
       "canvas": "^2.11.2",
@@ -64,14 +64,14 @@
       "translatte": "^3.0.1",
       "util": "^0.12.4",
       "wa-sticker-formatter": "^4.3.2",
-      "youtubei.js": "^7.0.0",
+      "youtubei.js": "9.4.0",
       "ytdl": "npm:@distube/ytdl-core",
       "ytdl-core": "npm:@distube/ytdl-core@^4.15.1",
-      "ytdl-secktor": "^0.0.1-development"
+      "ytdl-secktor": "latest"
    },
    "directories": {
       "lib": "lib",
-      "plugins": "plugins"
+      "plugins": "lib/plugins"
    },
    "devDependencies": {
       "pino": "^7.0.5"
