@@ -4,12 +4,15 @@
    "description": "Multi device whatsapp bot by Mek-d1 ....",
    "main": "index.js",
    "type": "commonjs",
+   
    "scripts": {
       "run": "pm2 start . --deep-monitoring --attach --name Mek-d1 || node .",
+      
       "Mek-d1 ": "pm2 start . --deep-monitoring --attach --name Mek-d1 || node .",
       "start": "pm2 start . --attach --name Mek-d1",
       "stop": "pm2 stop Mek-d1",
       "heroku-postbuild": "git clone https://github.com/Mek-d1/X-bot.git temp && mv temp/.git .git && rm -rf temp && npx puppeteer@latest install  --y",
+      
       "fis-heroku-postbuild": "git clone https://github.com/Mek-d1/X-bot.git temp1 && rsync -av temp1/* ./ && rsync -av temp1/.* ./ && rm -rf temp1 && npm i && npx puppeteer@latest install",
       "postinstall": "npx puppeteer@latest install --y"
    },
@@ -62,6 +65,7 @@
       "qrcode": "latest",
       "secktor-pack": "latest",
       "simple-git": "^3.15.1",
+      "syntax-error": "^1.4.0",
       "translatte": "^3.0.1",
       "util": "^0.12.4",
       "wa-sticker-formatter": "^4.3.2",
