@@ -1,4 +1,4 @@
-let PhoneNumber from 'awesome-phonenumber'
+export PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 let handler = async (m, { conn }) => {
   let _pp = './src/avatar_contact.png'
