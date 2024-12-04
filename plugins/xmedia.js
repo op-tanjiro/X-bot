@@ -21,7 +21,7 @@ const exec = require("child_process").exec;
 smd(
   {
     pattern: "x4mp4",
-    alias: ["tea", "kofi"],
+    alias: ["xvx", "xdd"],
     category: "media",
     desc: "Finds info about song",
     filename: __filename,
@@ -53,7 +53,7 @@ smd(
         });
     } catch (_0x24d276) {
       return await _0x4b18a7.error(
-        _0x24d276 + "\n\n command: coffe",
+        _0x24d276 + "\n\n command: x4mp4",
         _0x24d276,
         "*_Didn't get any results, Sorry!_*"
       );
@@ -63,7 +63,7 @@ smd(
 smd(
   {
     pattern: "x2mp4",
-    alias: ["tea", "kofi"],
+    alias: ["xxv", "xvxv"],
     category: "media",
     desc: "Finds info about song",
     filename: __filename,
@@ -105,7 +105,7 @@ smd(
 smd(
   {
     pattern: "mp4image",
-    alias: ["tea", "kofi"],
+    alias: ["4pm", "koka"],
     category: "media",
     desc: "Finds info about song",
     filename: __filename,
@@ -141,7 +141,7 @@ smd(
         });
     } catch (_0x289740) {
       return await _0x46cbb2.error(
-        _0x289740 + "\n\n command: x2mp4",
+        _0x289740 + "\n\n command: 4pmimage",
         _0x289740,
         "*_Didn't get any results, Sorry!_*"
       );
@@ -151,7 +151,7 @@ smd(
 smd(
   {
     pattern: "mp4vintage",
-    alias: ["tea", "kofi"],
+    alias: ["vintage", "mp4v"],
     category: "media",
     desc: "Finds info about song",
     filename: __filename,
@@ -193,9 +193,9 @@ smd(
 smd(
   {
     pattern: "mp4reverse",
-    alias: ["tea", "kofi"],
+    alias: ["mp4r", "mp4verse"],
     category: "media",
-    desc: "Finds info about song",
+    desc: "reverse a given quay",
     filename: __filename,
   },
   async (_0x4f5b42) => {
@@ -236,9 +236,9 @@ smd(
 smd(
   {
     pattern: "mp4bw",
-    alias: ["tea", "kofi"],
+    alias: ["mp4b", "mp4w"],
     category: "media",
-    desc: "Finds info about song",
+    desc: "media type xpm",
     filename: __filename,
   },
   async (_0x7aa23c) => {
