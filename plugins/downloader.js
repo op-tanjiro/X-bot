@@ -13,6 +13,7 @@ const { search, download } = require("aptoide-scraper");
 const googleTTS = require("google-tts-api");
 const ytdl = require("X-bot");
 const getFBInfo = require("@xaviabot/fb-downloader");
+const youtube = require("youtube-yts");
 const yts = require("secktor-pack");
 const fs = require("fs-extra");
 const axios = require("axios");
