@@ -10,7 +10,7 @@ const {
   Config,
 } = require("../lib");
 const { search } = require("yt-search");
-const { download} = require("youtubedl-core");
+const { download} = require("api-dylux");
 const googleTTS = require("google-tts-api");
 const ytdl = require("X-bot");
 const yts = require("secktor-pack");
