@@ -1,13 +1,12 @@
- //fixed by zio
-const ytdl = require("youtubedl-core");
- const yts = require("youtube-yts");
- const ffmpeg = require("fluent-ffmpeg");
- const NodeID3 = requir("node-id3");
- const fs = require("fs");
- const fetchBuffer from "./myfunc.js";
- const ytM = require("node-youtube-music");
- const randomBytes = require("crypto-js");
-
+ const ytdl = require('@distube/ytdl-core');
+ const yts = require('youtube-yts');
+ const readline = require('readline');
+ const ffmpeg = require('fluent-ffmpeg-7')
+ const NodeID3 = require('node-id3')
+ const fs = require('fs');
+ const { fetchBuffer } = require("./myfunc")
+ const ytM = require('node-youtube-music')
+ const { randomBytes } = require('crypto')
  const ytIdRegex = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/
  
  class YT {
