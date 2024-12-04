@@ -11,11 +11,10 @@ const {
 } = require("../lib");
 const { search, download } = require("aptoide-scraper");
 const googleTTS = require("google-tts-api");
-const ytdl = require("X-bot");
+const ytdl = require("youtubedl-core");
 const yts = require("secktor-pack");
 const fs = require("fs-extra");
 const axios = require("axios");
-const youtubedl = require("youtubedl-core");
 const fetch = require("node-fetch");
 var videotime = 2000;
 const { cmd } = require("../lib/plugins");
