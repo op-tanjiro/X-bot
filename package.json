@@ -67,8 +67,8 @@
       "wa-sticker-formatter": "^4.4.4",
       "youtubei.js": "11.0.1",
       "ytdl": "npm:@distube/ytdl-core",
-      "ytdl-core": "npm:@distube/ytdl-core@latest",
       "youtubedl-core": "^4.11.7",
+      "ytdl-core": "npm:@distube/ytdl-core@latest",
    },
    "directories": {
       "lib": "lib",
