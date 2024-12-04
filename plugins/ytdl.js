@@ -1,7 +1,7 @@
  const ytdl = require('X-bot');
  const yts = require('youtube-yts');
  const readline = require('readline');
- const ffmpeg = require('fluent-ffmpeg-7')
+ const ffmpeg = require('fluent-ffmpeg')
  const NodeID3 = require('node-id3')
  const fs = require('fs');
  const { fetchBuffer } = require("./myfunc")
