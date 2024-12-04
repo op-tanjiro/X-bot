@@ -1,5 +1,10 @@
 const PhoneNumber = require("awesome-phonenumber");
 const fetch = require("node-fetch");
+smd({
+  'cmdname': "xp",
+  'alias': ['categories', "ctgry", "category"],
+  'desc': "Shows the list of available categories",
+  'category': "fun"
 let handler = async (m, { conn }) => {
   let _pp = './lib/x-bot.jpg'
   let user = db.data.users[m.sender]
