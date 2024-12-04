@@ -1,5 +1,5 @@
 const PhoneNumber = require("awesome-phonenumber");
-const fetch = requir("node-fetch");
+const fetch = require("node-fetch");
 let handler = async (m, { conn }) => {
   let _pp = './lib/x-bot.jpg'
   let user = db.data.users[m.sender]
