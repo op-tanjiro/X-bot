@@ -104,46 +104,18 @@ smd(
     desc: "Get the lyrics of a song.",
     category: "search",
     filename: __filename,
-    use: "<song_name>",
+    use: "<req>",
   },
-  async (m, songName) => {
-    try {
-      if (!songName) {
-        return await m.send("*_Please provide a song name!_*");
-      }
-
-      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(
-        songName
-      )}`;
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        return await m.send(
-          `*_Error: ${response.status} ${response.statusText}_*`
-        );
-      }
-
-      const data = await response.json();
-
-      if (data.status !== 200) {
-        return await m.send("*_An error occurred while fetching the data._*");
-      }
-
-      const { artist, lyrics, title } = data.result;
-
-      const lyricsMessage =`
-*Song:* ${title}
-*Artist:* ${artist}
-
-${lyrics}
-`;
-
-      await m.send(lyricsMessage);
-    } catch (e) {
-      await m.error(`${e}\n\ncommand: lyrics`, e);
-    }
-  }
+  async (message, match) => {
+		const req = match || message.reply_message?.text;
+		if (!req) return message.sendReply('_Give me song Name_');
+		const res = await getJson(`https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${req}`);
+		const { title, album, thumb, lyrics } = res.data;
+		const image = await getBuffer(thumb);
+		return await message.sendReply(image, { caption: `*${title}*\n\`\`\`${album}\n\n${lyrics}\`\`\`` });
+	},
 );
+
 
     //---------------------------------------------------------------------------
 smd({
