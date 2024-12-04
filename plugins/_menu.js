@@ -14,20 +14,20 @@ let currentDesignIndex = 0;
 function getNextMenuDesign() {
   const designs = [
     {
-      header: "✦✦✦ ⟪ *{botname}* ⟫ ✦✦✦\n",
-      lineSeparator: "✦ ",
+      header: "☜☜☜ ⟪ *{botname}* ⟫ ☞☞☞\n",
+      lineSeparator: "☞ ",
       commandPrefix: "➔ ",
-      footer: "✦✦✦✦✦✦✦✦✦✦",
+      footer: "☜☜☜☜☞☞☞☞",
       emoji: "🌟",
-      categorySeparator: "✦✧✦✧✦✧✦\n",
+      categorySeparator: "☜☜☜✧☞☞☞\n",
     },
     {
       header: "⬤ ⟪ *{botname}* ⟫ ⬤\n",
-      lineSeparator: "🚀 ",
+      lineSeparator: "° ",
       commandPrefix: "⇒ ",
-      footer: "🚀🚀🚀⬤⬤⬤",
+      footer: "°°°°°°",
       emoji: "🚀",
-      categorySeparator: "⬤🚀⬤🚀⬤🚀⬤\n",
+      categorySeparator: "°°°°°°°\n",
     },
     {
       header: "✰ ⟪ *{botname}* ⟫ ✰\n",
@@ -35,7 +35,7 @@ function getNextMenuDesign() {
       commandPrefix: "✦ ",
       footer: "✰✰✰✰✰✰✰",
       emoji: "✨",
-      categorySeparator: "✰☽✰☽✰☽✰\n",
+      categorySeparator: "✰✰✰✰✰✰✰\n",
     }
   ];
 
@@ -102,12 +102,12 @@ astro_patch.smd({
     let menuContent = `${header}`;
     menuContent += `${lineSeparator}🌡️ *Temperature:* ${temperature}°C\n`;
     menuContent += `${lineSeparator}🚀 *Owner:* ${Config.ownername}\n`;
-    menuContent += `${lineSeparator}🌍 *Location:* ${location}\n`;
+    menuContent += `${lineSeparator}🌐 *Location:* ${location}\n`;
     menuContent += `${lineSeparator}📆 *Date:* ${currentDate}\n`;
-    menuContent += `${lineSeparator}🕰️ *Time:* ${currentTimeString}\n`;
+    menuContent += `${lineSeparator}⏰ *Time:* ${currentTimeString}\n`;
     menuContent += `${lineSeparator}⏲️ *Uptime:* ${runtime(process.uptime())}\n`;
-    menuContent += `${lineSeparator}💾 *RAM Usage:* ${formatp(os.totalmem() - os.freemem())}\n`;
-    menuContent += `${lineSeparator}📊 *Total Commands:* ${commands.length}\n\n`;
+    menuContent += `${lineSeparator}👨🏾‍💻 *RAM Usage:* ${formatp(os.totalmem() - os.freemem())}\n`;
+    menuContent += `${lineSeparator}♾️ *Total Commands:* ${commands.length}\n\n`;
 
     // List commands by category with decorative separators
     for (const category in commandCategories) {
