@@ -8,8 +8,10 @@ let Suhail_Md = "Suhail MD Whatsapp bot md"
 const moment = require('moment-timezone')
 const {fetchJson,smd, tlang,send, getBuffer, prefix, Config ,groupdb } = require('../lib')
 let gis = require("async-g-i-s");
-const axios = require('axios')
-const fetch = require('node-fetch')
+const axios = require('axios');
+const fetch = require('node-fetch');
+const Genius = require("genius-lyrics");
+const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO");
 
    //---------------------------------------------------------------------------
    const { shazam } = require('../lib')
@@ -98,52 +100,34 @@ async(m) => {
 
 
     //---------------------------------------------------------------------------
-smd(
-  {
-    pattern: "lyrics",
-    desc: "Get the lyrics of a song.",
-    category: "search",
-    filename: __filename,
-    use: "<song_name>",
-  },
-  async (m, songName) => {
-    try {
-      if (!songName) {
-        return await m.send("*_Please provide a song name!_*");
-      }
-
-      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(
-        songName
-      )}`;
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        return await m.send(
-          `*_Error: ${response.status} ${response.statusText}_*`
-        );
-      }
-
-      const data = await response.json();
-
-      if (data.status !== 200) {
-        return await m.send("*_An error occurred while fetching the data._*");
-      }
-
-      const { artist, lyrics, title } = data.result;
-
-      const lyricsMessage =`
-*Song:* ${title}
-*Artist:* ${artist}
-
-${lyrics}
-`;
-
-      await m.send(lyricsMessage);
-    } catch (e) {
-      await m.error(`${e}\n\ncommand: lyrics`, e);
+smd({
+  'nomCom': "lyrics",
+  'reaction': '🗞',
+  'categorie': "Search"
+}, async (_0x16b585, _0x24921b, _0x5047e1) => {
+  const {
+    repondre: _0x323d88,
+    arg: _0x47ee56,
+    ms: _0x26dbd3
+  } = _0x5047e1;
+  try {
+    if (!_0x47ee56 || _0x47ee56.length === 0x0) {
+      return _0x323d88("please provide me the song name");
     }
+    const _0x2d6993 = _0x47ee56.join(" ");
+    const _0x19a972 = await Client.songs.search(_0x2d6993);
+    const _0x349a1c = _0x19a972[0x0];
+    const _0x3e8204 = await _0x349a1c.lyrics();
+    await _0x24921b.sendMessage(_0x16b585, {
+      'text': _0x3e8204
+    }, {
+      'quoted': _0x26dbd3
+    });
+  } catch (_0xe736b5) {
+    reply("I did not find any lyrics for " + text + ". Try searching a different song.");
+    console.log(_0xe736b5);
   }
-);
+});
 
     //---------------------------------------------------------------------------
 smd({
