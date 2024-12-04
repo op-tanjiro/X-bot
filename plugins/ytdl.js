@@ -4,7 +4,7 @@ const ytdl = require("youtubedl-core");
  const ffmpeg = require("fluent-ffmpeg");
  const NodeID3 = requir("node-id3");
  const fs = require("fs");
- const fetchBuffer from "./myfunc";
+ const fetchBuffer from ("./myfunc");
  const ytM = require("node-youtube-music");
  const randomBytes = require("crypto-js");
 
