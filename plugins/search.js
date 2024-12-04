@@ -107,10 +107,9 @@ smd({
            category: "search",
            desc: "Finds lyrics of a given query",
            filename: __filename,
-       }, 
-    async (_0x16b585, _0x24921b, _0x5047e1) => {
+       }, async (_0x16b585, _0x24921b, _0x5047e1) => {
   const {
-    repondre: _0x323d88,
+    reponse: _0x323d88,
     arg: _0x47ee56,
     ms: _0x26dbd3
   } = _0x5047e1;
@@ -123,15 +122,6 @@ smd({
     const _0x349a1c = _0x19a972[0x0];
     const _0x3e8204 = await _0x349a1c.lyrics();
     await _0x24921b.sendMessage(_0x16b585, {
-       const { artist, lyrics, title } = data.result;
-
-      const lyricsMessage =`
-*Song:* ${title}
-*Artist:* ${artist}
-
-${lyrics}
-`;
-       
       'text': _0x3e8204
     }, {
       'quoted': _0x26dbd3
@@ -141,6 +131,8 @@ ${lyrics}
     console.log(_0xe736b5);
   }
 });
+
+   
 
     //---------------------------------------------------------------------------
 smd({
@@ -228,7 +220,7 @@ smd({
  )
 
     //---------------------------------------------------------------------------
-/*
+
 smd({
             pattern: "horo",
             category: "search",
@@ -261,7 +253,7 @@ smd({
             }catch(e){return await message.error(`${e}\n\n command: horo`,e,`*_Uhh dear, Didn't get any results!_*`) }
         }
     )
-    */
+    
     //---------------------------------------------------------------------------
 
 smd({
