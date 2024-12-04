@@ -8,6 +8,7 @@ const {
     smdBuffer
   } = require("../lib");
   const axios = require("axios");
+const { Sticker, StickerTypes } = require("wa-sticker-formatter");
   smd({
     cmdname: "stickersearch",
     alias: ["sticsearch"],
