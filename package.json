@@ -21,6 +21,7 @@
       "@whiskeysockets/baileys": "6.6.0",
       "acrcloud": "^1.4.0",
       "anime-character-random": "latest",
+      "awesome-phonenumber": "^6.4.0",
       "aptoide-scraper": "^1.0.1",
       "async-g-i-s": "^1.4.0",
       "axios": "^0.24.0",
