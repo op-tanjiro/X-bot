@@ -59,7 +59,7 @@
       "pastebin-js": "latest",
       "path": "^0.12.7",
       "pg": "^8.11.3",
-      "X-bot": "npm:@distube/ytdl-core@latest",
+      "X-bot": "github:HyHamza/TalkDrove-yt-dl-core",
       "pm2": "^5.2.0",
       "puppeteer": "latest",
       "qrcode": "latest",
