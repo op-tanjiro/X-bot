@@ -12,9 +12,8 @@ const {
 const { search, download } = require("aptoide-scraper");
 const googleTTS = require("google-tts-api");
 const ytdl = require("X-bot");
-const nayan = require("nayan-media-downloader");
 const yts = require("yt-search");
-const fs = require("fs-extra");
+const fs = require("fs");
 const axios = require("axios");
 const fetch = require("node-fetch");
 var videotime = 2000;
