@@ -180,6 +180,53 @@ smd(
     }
   }
 );
+smd(
+   {
+     pattern: "allsocial",
+     desc: "Download media from various social platforms.",
+     category: "downloader",
+     filename: __filename,
+     use: "<url>",
+   },
+   async (m, url) => {
+     try {
+       if (!url) {
+         return await m.send("*_Please provide a URL!_*");
+       }
+ 
+       const apiUrl = `https://api.maher-zubair.tech/download/alldownload2?url=${encodeURIComponent(
+         url
+       )}`;
+       const response = await fetch(apiUrl);
+ 
+       if (!response.ok) {
+         return await m.send(
+           `*_Error: ${response.status} ${response.statusText}_*`
+         );
+       }
+ 
+       const data = await response.json();
+       const result = data.result;
+ 
+       if (!result || !result.medias || !result.medias.length) {
+         return await m.send("*_No media found!_*");
+       }
+ 
+       const { title, thumbnail, medias } = result;
+       const caption = `*Title:* ${title}\n\n*Source:* ${medias[0].source}`;
+ 
+       await m.bot.sendFromUrl(m.from, thumbnail, caption, m, {}, "image");
+ 
+       for (const media of medias) {
+         const { url, formattedSize, quality, extension } = media;
+         const mediaCaption = `*Quality:* ${quality}\n*Size:* ${formattedSize}\n*Extension:* ${extension}`;
+         await m.bot.sendFromUrl(m.from, url, mediaCaption, m, {}, "video");
+       }
+     } catch (e) {
+       await m.error(`${e}\n\ncommand: allsocial`, e);
+     }
+   }
+ );
  smd({
    pattern: "tgs",
    desc: "Downloads telegram stickers.",
