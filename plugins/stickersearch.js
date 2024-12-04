@@ -8,6 +8,7 @@ const {
     smdBuffer
   } = require("../lib");
   const axios = require("axios");
+const { Sticker, StickerTypes } = require("wa-sticker-formatter");
   smd({
     cmdname: "stickersearch",
     alias: ["sticsearch"],
@@ -22,7 +23,9 @@ const {
       if (!_0xa151c7) {
         return _0x4cc234.reply("Sorry you did not give any search term!");
       }
-      const _0x1f4c84 = await axios.get("https://g.tenor.com/v1/search?q=" + _0xa151c7 + "&key=LIVDSRZULELA&limit=8").catch(() => {});
+      const gif = await axios.get(
+      `https://tenor.googleapis.com/v2/search?q=${gifSearchTerm}&key=${tenorApiKey}&client_key=my_project&limit=8&media_filter=gif`
+    );
       if (!_0x1f4c84.data || !_0x1f4c84.data.results || !_0x1f4c84.data.results[0]) {
         return _0x4cc234.reply("*Could not find!*");
       }
