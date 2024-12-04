@@ -9,7 +9,10 @@ const {
   } = require("../lib/X-bot");
   const axios = require("axios");
 const { Sticker, StickerTypes } = require("wa-sticker-formatter");
-  smd({
+
+  smd
+      ( 
+          {
     cmdname: "stickersearch",
     alias: ["sticsearch"],
     category: "search",
