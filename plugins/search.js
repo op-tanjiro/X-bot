@@ -101,10 +101,14 @@ async(m) => {
 
     //---------------------------------------------------------------------------
 smd({
-  'nomCom': "lyrics",
-  'reaction': '🗞',
-  'categorie': "Search"
-}, async (_0x16b585, _0x24921b, _0x5047e1) => {
+          pattern: "lyrics",
+           alias :["lyrics","songs"],
+           react : "🎼",
+           category: "search",
+           desc: "Finds lyrics of a given query",
+           filename: __filename,
+       }, 
+    async (_0x16b585, _0x24921b, _0x5047e1) => {
   const {
     repondre: _0x323d88,
     arg: _0x47ee56,
