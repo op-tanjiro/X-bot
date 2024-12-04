@@ -450,7 +450,7 @@ smd({
     //---------------------------------------------------------------------------
 smd({
         pattern: "iswa",
-        alias: ["oldwa","bio","onwa"],
+        alias: ["oldwa","newwa","onwa"],
         category: "search",
         desc: "Searches in given rage about given number.",
         use: '9112345678xx',
