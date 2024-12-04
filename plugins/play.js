@@ -51,10 +51,6 @@ smd({
 
     // Use the new API to get download links
     const downloadApiUrl = "https://api.giftedtech.my.id/api/download/ytaudio?apikey=gifted&url=" + encodeURIComponent(_0x4f86cb.url);
-    const sampleUrl = 'https://youtu.be/wJnBTPUQS5A?si=klI0qxyOnnbcriOk'; 
-    let data = await gifted.giftedyta(sampleUrl)
-    console.log(data);
-    
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
