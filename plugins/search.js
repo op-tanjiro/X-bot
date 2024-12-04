@@ -123,6 +123,15 @@ smd({
     const _0x349a1c = _0x19a972[0x0];
     const _0x3e8204 = await _0x349a1c.lyrics();
     await _0x24921b.sendMessage(_0x16b585, {
+       const { artist, lyrics, title } = data.result;
+
+      const lyricsMessage =`
+*Song:* ${title}
+*Artist:* ${artist}
+
+${lyrics}
+`;
+       
       'text': _0x3e8204
     }, {
       'quoted': _0x26dbd3
