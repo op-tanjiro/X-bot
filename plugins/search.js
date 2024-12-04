@@ -6,7 +6,7 @@ let Suhail_Md = "Suhail MD Whatsapp bot md"
 
 
 const moment = require('moment-timezone')
-const {fetchJson,smd, tlang,send, getBuffer, prefix, Config ,groupdb } = require('../lib')
+const {fetchJson,smd, tlang,send, getBuffer, prefix, Config ,groupdb } = require('../lib/X-bot')
 let gis = require("async-g-i-s");
 const axios = require('axios');
 const fetch = require('node-fetch');
