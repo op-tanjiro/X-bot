@@ -117,7 +117,7 @@ smd(
       await m.send("Searching.....");
 
       // Define the API URL for fetching song details
-      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(query)}`;
+      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${query}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
