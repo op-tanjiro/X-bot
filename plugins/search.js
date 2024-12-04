@@ -98,38 +98,53 @@ async(m) => {
 
 
     //---------------------------------------------------------------------------
-smd({pattern: 'lyrics', alias :['lyric'],category: "search", desc: "Searche lyrics of given song name",use: '<text | song>',filename: __filename,},
-
-    async(message, text,{cmdName}) => {
-    if (!text) return message.reply(`*_Uhh please, give me song name_*\n*_Example ${prefix+cmdName} blue eyes punjabi_*`);
+md(
+  {
+    pattern: "lyrics",
+    desc: "Get the lyrics of a song.",
+    category: "search",
+    filename: __filename,
+    use: "<song_name>",
+  },
+  async (m, songName) => {
     try {
-      const res = await ( await fetch(`https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${text}`) ).json();
+      if (!songName) {
+        return await m.send("*_Please provide a song name!_*");
+      }
+
+      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(
+        songName
+      )}`;
+      const response = await fetch(apiUrl);
+
       if (!response.ok) {
         return await m.send(
           `*_Error: ${response.status} ${response.statusText}_*`
         );
       }
 
-      // Get the result from the API response
       const data = await response.json();
 
-      if (!data.status || !data.result || !data.result.title) {
-        return await m.send(`No song found matching the lyrics: "${text}".`);
+      if (data.status !== 200) {
+        return await m.send("*_An error occurred while fetching the data._*");
       }
 
-      // Destructure the result to extract relevant fields
-      const { title, album, lyrics } = data.result;
-      const albumInfo = album ? `Album: ${album}` : "Album: N/A";
-      const message = `*Song Found:*\n\n*Title:* ${title}\n*${albumInfo}*\n\n*Lyrics:*\n\n${lyrics}`;
+      const { Artist, Lyrics, Title } = data.result;
 
-      // Send the final response with song details
-      await m.send(message);
+      const lyricsMessage =`
+*Song:* ${Title}
+*Artist:* ${Artist}
+
+${Lyrics}
+`;
+
+      await m.send(lyricsMessage);
     } catch (e) {
       await m.error(`${e}\n\ncommand: lyrics`, e);
     }
   }
 )
-
+           
 
 
     //---------------------------------------------------------------------------
