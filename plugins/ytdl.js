@@ -1,4 +1,4 @@
- const ytdl = require('@distube/ytdl-core');
+ const ytdl = require('X-bot');
  const yts = require('youtube-yts');
  const readline = require('readline');
  const ffmpeg = require('fluent-ffmpeg-7')
