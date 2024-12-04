@@ -101,20 +101,23 @@ async(m) => {
 smd(
   {
     pattern: "lyrics",
-    desc: "Get the lyrics of a song.",
+    desc: "Get song details based on provided lyrics.",
     category: "search",
     filename: __filename,
-    use: "<songName>",
   },
-  async (m, songName) => {
+  async (m) => {
     try {
-      if (!songName) {
-        return await m.send("*_Please provide a song name!_*");
+      // Extract the lyrics query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide some lyrics to search for, e.g., `.lyrics I got this feeling inside my bones`.");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(
-        songName
-      )}`;
+      // Send a loading message
+      await m.send("Searching.....");
+
+      // Define the API URL for fetching song details
+      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -123,22 +126,20 @@ smd(
         );
       }
 
+      // Get the result from the API response
       const data = await response.json();
 
-      if (data.status !== 200) {
-        return await m.send("*_An error occurred while fetching the data._*");
+      if (!data.status || !data.result || !data.result.title) {
+        return await m.send(`No song found matching the lyrics: "${query}".`);
       }
 
-      const { artist, lyrics, title } = data.result;
+      // Destructure the result to extract relevant fields
+      const { title, album, lyrics } = data.result;
+      const albumInfo = album ? `Album: ${album}` : "Album: N/A";
+      const message = `*Song Found:*\n\n*Title:* ${title}\n*${albumInfo}*\n\n*Lyrics:*\n\n${lyrics}`;
 
-      const lyricsMessage =`
-*Song:* ${title}
-*Artist:* ${artist}
-
-${lyrics}
-`;
-
-      await m.send(lyricsMessage);
+      // Send the final response with song details
+      await m.send(message);
     } catch (e) {
       await m.error(`${e}\n\ncommand: lyrics`, e);
     }
