@@ -4,7 +4,7 @@
  const ffmpeg = require('fluent-ffmpeg')
  const NodeID3 = require('node-id3')
  const fs = require('fs');
- const { fetchBuffer } = require("./myfunc")
+ const { fetchBuffer } = from("./myfunc")
  const ytM = require('node-youtube-music')
  const { randomBytes } = require('crypto')
  const ytIdRegex = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/
