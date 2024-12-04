@@ -5,7 +5,9 @@ smd({
   'alias': ['categories', "ctgry", "category"],
   'desc': "Shows the list of available categories",
   'category': "fun"
-let cmdname = async (m, { conn }) => {
+}, async (message, input) => {
+  try {
+    // If a command is provided, search for its details
   let _pp = './lib/x-bot.jpg'
   let user = db.data.users[m.sender]
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
