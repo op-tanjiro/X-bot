@@ -18,7 +18,6 @@ const axios = require("axios");
 const fetch = require("node-fetch");
 const path = require("path");
 var videotime = 2000;
-const gifted = require("gifted-dls");
 const { cmd } = require("../lib/plugins");
 
 smd({
