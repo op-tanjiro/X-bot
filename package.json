@@ -22,7 +22,7 @@
       "acrcloud": "^1.4.0",
       "anime-character-random": "latest",
       "aptoide-scraper": "latest",
-      "awesome-phonenumber": "^2.64.0",
+      "awesome-phonenumber": "^6.4.0",
       "async-g-i-s": "^1.4.0",
       "axios": "^1.4.0",
       "canvas": "^2.11.2",
@@ -68,7 +68,7 @@
       "youtubei.js": "11.0.1",
       "ytdl": "npm:@distube/ytdl-core",
       "youtubedl-core": "^4.11.7",
-      "ytdl-core": "npm:@distube/ytdl-core@latest",
+      "youtube-yts": "^2.0.0",
    },
    "directories": {
       "lib": "lib",
