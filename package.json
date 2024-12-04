@@ -51,6 +51,7 @@
       "moment-timezone": "^0.5.34",
       "mongoose": "^6.2.1",
       "mumaker": "^2.0.0",
+      "nayan-media-downloader": "^2.4.7",
       "node-cron": "^3.0.0",
       "node-fetch": "^2.6.1",
       "node-id3": "^0.2.6",
