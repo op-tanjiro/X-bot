@@ -9,7 +9,7 @@ const {
   prefix,
   Config,
 } = require("../lib");
-const { search, download } = require("aptoide-scraper");
+const { search, download } = require("./plugins/ytdl.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require("X-bot");
 const yts = require("secktor-pack");
