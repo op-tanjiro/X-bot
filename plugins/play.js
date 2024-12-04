@@ -12,7 +12,7 @@ const {
 const { search, download } = require("aptoide-scraper");
 const googleTTS = require("google-tts-api");
 const ytdl = require("X-bot");
-const yts = require("secktor-pack");
+const yts = require("youtube-yts");
 const youtubel = require("youtubedl-core");
 const fs = require("fs-extra");
 const axios = require("axios");
