@@ -220,7 +220,7 @@ smd({
  )
 
     //---------------------------------------------------------------------------
-
+/*
 smd({
             pattern: "horo",
             category: "search",
@@ -253,6 +253,7 @@ smd({
             }catch(e){return await message.error(`${e}\n\n command: horo`,e,`*_Uhh dear, Didn't get any results!_*`) }
         }
     )
+    */
     
     //---------------------------------------------------------------------------
 
