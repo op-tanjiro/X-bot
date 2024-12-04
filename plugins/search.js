@@ -104,18 +104,31 @@ smd({pattern: 'lyrics', alias :['lyric'],category: "search", desc: "Searche lyri
     if (!text) return message.reply(`*_Uhh please, give me song name_*\n*_Example ${prefix+cmdName} blue eyes punjabi_*`);
     try {
       const res = await ( await fetch(`https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${text}`) ).json();
-      if(!res.status) return message.send("*Please Provide valid name!!!*");
-      if(!res.result) return message.send("*There's a problem, try again later!*");
-      const { thumb,lyrics,title,artist } = res.result, tbl= "```", tcl ="*", tdl = "_*", contextInfo = { externalAdReply: { ...(await message.bot.contextInfo("X-bot",`Lyrics-${text}`))} }
-  await send(message, `*𝚃𝚒𝚝𝚕𝚎:* ${title}\n*𝙰𝚛𝚝𝚒𝚜𝚝:* ${artist} \n${tbl}${lyrics}${tbl} `,{contextInfo  : contextInfo },"");
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
 
-}catch(e){return await message.error(`${e}\n\n command: ${cmdName}`,e,`*_Didn't get any lyrics, Sorry!_*`) }
+      // Get the result from the API response
+      const data = await response.json();
 
+      if (!data.status || !data.result || !data.result.title) {
+        return await m.send(`No song found matching the lyrics: "${text}".`);
+      }
 
+      // Destructure the result to extract relevant fields
+      const { title, album, lyrics } = data.result;
+      const albumInfo = album ? `Album: ${album}` : "Album: N/A";
+      const message = `*Song Found:*\n\n*Title:* ${title}\n*${albumInfo}*\n\n*Lyrics:*\n\n${lyrics}`;
 
-
-
-})
+      // Send the final response with song details
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: lyrics`, e);
+    }
+  }
+)
 
 
 
