@@ -68,7 +68,6 @@
       "youtubei.js": "11.0.1",
       "ytdl": "npm:@distube/ytdl-core",
       "ytdl-core": "npm:@distube/ytdl-core@latest",
-      "ytdl-secktor": "latest"
       "youtubedl-core": "^4.11.7",
    },
    "directories": {
