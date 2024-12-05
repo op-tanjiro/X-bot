@@ -90,7 +90,8 @@ smd({
             'quoted': _0x213b75
           });
           
-          fs.unlinkSync(_0x239ef4); // Delete the file after sending
+          fs.unlinkSync(_0x239ef4);
+          
           return;
         } else {
           console.log("Error: Could not download audio, API response:", _0x509920);
