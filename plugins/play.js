@@ -48,8 +48,6 @@ smd({
       'image': _0x4342ba,
       'caption': "\n*-X-:bot • ᴍᴜꜱɪᴄ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n*Title :* " + _0x4f86cb.title + "\n*Url :* " + _0x4f86cb.url + "\n*Description :* " + _0x4f86cb.timestamp + "\n*Views :* " + _0x4f86cb.views + "\n*Uploaded :* " + _0x4f86cb.ago + "\n*Author :* " + _0x4f86cb.author.name + "\n\n_-X-:bot is downloading your music..._\n"
     });
-    
-❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁
 await console.sendMessage(from, { image: { url: _0x4f86cb.thumbnail }, caption: cap}, { quoted: mek })
 const yt2 = await dl.youtubedl(_0x4f86cb.url)
 if (yt2.audio['128kbps'].fileSizeH.includes('MB') && yt2.audio['128kbps'].fileSizeH.replace(' MB','') >= config.MAX_SIZE) return await console.sendMessage(from, { text: '*This video too big !!*' }, { quoted: mek });
