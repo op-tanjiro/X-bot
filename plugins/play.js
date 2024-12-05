@@ -95,7 +95,7 @@ smd({
     console.error(error);
     throw 'An error occurred while searching for YouTube videos.';
   }
-  }
+  );
     smd({
   'pattern': "ytmp4",
   'react': "🎥",
