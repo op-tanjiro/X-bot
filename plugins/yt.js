@@ -1,10 +1,17 @@
 const config = require("../config")
 const l = console.log
-const { smd, commands } = require("../lib")
+const { smd, fetchJson,
+  astroJson,
+  fancytext,
+  yt,
+  getBuffer,
+  smdBuffer,
+  prefix,
+  Config } = require("../lib")
 const dl = require("@bochilteam/scraper")  
 const ytdl = require("yt-search");
 const fs = require("fs-extra")
-var videotime = 60000 // 1000 min
+var videotime = 6000 // 100 min
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require("../lib/functions")
 smd({
     pattern: "yts",
@@ -101,9 +108,9 @@ smd({
 
 async(_0x213b75, q, _0x13be17) => {
 try{
-if (!q) return reply('Please give me quary to download')
+if (_0x13be17) return reply('Please give me quary to download')
 let yts = require("yt-search")
-let search = await yts(q)
+let search = await yts(_0x13be17)
 let anu = search.videos[0]
 const cap = `*X-bot MUSIC DOWNLOADER 🛜*
 
