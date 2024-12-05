@@ -397,8 +397,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && status.result.title.sd) {
-      const videoDownloadUrl = status.result.title.sd; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && status.result.sd.url) {
+      const videoDownloadUrl = status.result.sd.url; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
