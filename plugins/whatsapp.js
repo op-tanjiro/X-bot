@@ -49,6 +49,19 @@ smd({
   }
   {}
 });
+
+smd(
+   {
+      pattern: 'clean ?(.*)',
+      isPublic: false,
+      desc: 'delete whatsapp chat',
+      type: 'whatsapp',
+   },
+   async (message) => {
+      await message.clearChat();
+      await message.sendReply('_Cleared_');
+   }
+);
 smd({
   'pattern': "rpp",
   'desc': "remove profile picture",
