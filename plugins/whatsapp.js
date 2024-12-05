@@ -52,7 +52,7 @@ smd({
 
 smd(
    {
-      pattern: 'clean ?(.*)',
+      pattern: 'clean',
       isPublic: false,
       desc: 'delete whatsapp chat',
       type: 'whatsapp',
