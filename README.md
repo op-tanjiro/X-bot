@@ -24,11 +24,11 @@ Get started with X-bot quickly! Choose your preferred deployment method:
 
 ### 🔑 ２．ＧＥＴ ＳＥＳＳＩＯＮ ＩＤ
 - **Pair Code**: 
-  <a href="https://above-allpair.onrender.com/pair">
+  <a href="https://x-bot-session.onrender.com/pair">
     <img src="https://img.shields.io/badge/Pair_Code-1E90FF?style=for-the-badge" alt="Click Here to Get Pair-Code" width="120">
   </a>
 - **QR Code**: 
-  <a href="https://above-allpair.onrender.com/wasiqr">
+  <a href="https://x-bot-session.onrender.com/wasiqr">
     <img src="https://img.shields.io/badge/QR_Code-32CD32?style=for-the-badge" alt="Click Here to Get QR-Code" width="100">
   </a>
 
