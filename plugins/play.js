@@ -22,7 +22,7 @@ var videotime = 2000;
 const { cmd } = require("../lib");
 
 smd({
-  'pattern': "pllay",
+  'pattern': "play",
   'react': "🎵",
   'alias': ["music"],
   'desc': "Downloads audio from YouTube.",
@@ -128,7 +128,7 @@ smd({
     const youtubeUrl = _0x13be17.trim();
 
     // Use the new API to get download links
-    const downloadApiUrl = "https://api.giftedtech.my.id/api/download/ytmp4?apikey=gifted&url=" + encodeURIComponent(youtubeUrl);
+    const downloadApiUrl = "https://www.dark-yasiya-api.site/download/ytmp4?url=" + encodeURIComponent(youtubeUrl);
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
@@ -137,8 +137,8 @@ smd({
         const _0x509920 = _0x2cc463.data;
         console.log("API Response:", _0x509920);
 
-        if (_0x509920.status && _0x509920.result.mp4) {
-          const _0x539170 = _0x509920.result.mp4;
+        if (_0x509920.status && _0x509920.result.dl_link) {
+          const _0x539170 = _0x509920.result.dl_link;
           
           // Download the mp4 file
           const _0x3ce5d2 = await axios({
@@ -205,7 +205,7 @@ smd({
     const youtubeUrl = _0x13be17.trim();
 
     // Use the new API to get download links
-    const downloadApiUrl = "https://api.giftedtech.my.id/api/download/ytmp3?apikey=gifted&url=" + encodeURIComponent(youtubeUrl);
+    const downloadApiUrl = "https://www.dark-yasiya-api.site/download/ytmp3?url=" + encodeURIComponent(youtubeUrl);
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
@@ -214,8 +214,8 @@ smd({
         const _0x509920 = _0x2cc463.data;
         console.log("API Response:", _0x509920);
 
-        if (_0x509920.status && _0x509920.result.mp3) {
-          const _0x539170 = _0x509920.result.mp3;
+        if (_0x509920.status && _0x509920.result.dl_link) {
+          const _0x539170 = _0x509920.result.dl_link;
           
           // Download the mp3 file
           const _0x3ce5d2 = await axios({
@@ -266,7 +266,7 @@ smd({
   }
 });;
 smd({
-  'pattern': "ytsv",
+  'pattern': "ytv",
   'alias': ["video"],
   'desc': "Downloads video from YouTube.",
   'category': "downloader",
@@ -293,7 +293,7 @@ smd({
     });
 
     // Use the new API to get download links
-    const downloadApiUrl = "https://api.giftedtech.my.id/api/download/ytvideo?apikey=gifted&url=" + encodeURIComponent(_0x4f86cb.url);
+    const downloadApiUrl = "https://www.dark-yasiya-api.site/download/ytmp4?url=" + encodeURIComponent(_0x4f86cb.url);
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
@@ -302,8 +302,8 @@ smd({
         const _0x509920 = _0x2cc463.data;
         console.log("API Response:", _0x509920);
 
-        if (_0x509920.status && _0x509920.result.mp4) {
-          const _0x539170 = _0x509920.result.mp4;
+        if (_0x509920.status && _0x509920.result.dl_link) {
+          const _0x539170 = _0x509920.result.dl_link;
           
           // Download the mp4 file
           const _0x3ce5d2 = await axios({
