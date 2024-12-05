@@ -5,7 +5,6 @@ const {
   fancytext,
   yt,
   getBuffer,
-  smdBuffer,
   prefix,
   Config,
 } = require("../lib/plugins");
