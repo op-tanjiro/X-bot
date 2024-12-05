@@ -125,7 +125,7 @@ smd(
 
       const data = await response.json();
 
-      if (data.status !== 200) {
+      if (data.status !== 400) {
         return await m.send("*_An error occurred while fetching the data._*");
       }
 
