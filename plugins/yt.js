@@ -12,7 +12,7 @@ const dl = require("@bochilteam/scraper")
 const ytdl = require("yt-search");
 const fs = require("fs-extra")
 var videotime = 6000 // 100 min
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require("../lib/functions")
+const { getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep} = require("../lib/functions")
 smd({
     pattern: "yts",
     alias: ["ytsearch"],
