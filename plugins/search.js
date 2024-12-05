@@ -130,7 +130,7 @@ smd(
       // Get the result from the API response
       const data = await response.json();
 
-      if (!{.title || !data.result || !data.result.title) {
+      if (!.title || !data.result || !data.result.title) {
         return await m.send(`No song found matching the lyrics: "${query}".`);
       }
 
