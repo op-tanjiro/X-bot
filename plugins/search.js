@@ -122,14 +122,7 @@ smd(
         return await m.send(
           `*_Error: ${response.status} ${response.statusText}_*`
         );
-      }
-
-      const data = await response.json();
-
-      if (data.status !== 200) {
-        return await m.send("*_An error occurred while fetching the data._*");
-      }
-
+       
       const { artist, lyrics, title } = data.result;
 
       const lyricsMessage =`
