@@ -33,7 +33,7 @@ Get started with X-bot quickly! Choose your preferred deployment method:
   </a>
 
 ### 🌈 ３．ＤＥＰＬＯＹ ＴＯ ＰＬＡＴＦＯＲＭＳ
-Pick your favorite platform to deploy Pʟᴀᴛɪɴᴜᴍ-V1:
+Pick your favorite platform to deploy X-bot:
 
 <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
   <div style="border: 2px solid #FF4500; border-radius: 15px; padding: 15px; width: 80%; text-align: center;">
