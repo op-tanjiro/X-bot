@@ -109,6 +109,53 @@ smd({
     return _0x213b75.error(_0x3c9fcf + "\n\ncommand: playy", _0x3c9fcf, "*_File not found!!_*");
   }
 });
+smd({  
+  pattern: "play2",
+    alias: ["yta","song"],
+    use: '.play koun umar',
+    react: "🎧",
+    desc: "Search & download yt song.",
+    category: "download",
+    filename: __filename
+},
+
+async(conn, mek, m,{from, l, quoted, body, isCmd, darkneo, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+if (!q) return reply('Please give me quary to download')
+let yts = require("yt-search")
+let search = await yts(q)
+let anu = search.videos[0]
+const cap = `*X-bot MUSIC DOWNLOADER 🛜*
+
+TITLE: ${anu.title}
+
+🔗𝐔𝐑𝐋 : ${anu.url}
+
+🌐𝐃𝐔𝐑𝐀𝐓𝐈𝐎𝐍 : ${anu.timestamp}
+
+📟𝐕𝐈𝐄𝐖𝐒: ${anu.views}
+
+
+*X-ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ X*
+
+*X-teams solo-X*
+
+
+❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁❁`
+await conn.sendMessage(from, { image: { url: anu.thumbnail }, caption: cap}, { quoted: mek })
+const yt2 = await dl.youtubedl(anu.url)
+if (yt2.audio['128kbps'].fileSizeH.includes('MB') && yt2.audio['128kbps'].fileSizeH.replace(' MB','') >= config.MAX_SIZE) return await conn.sendMessage(from, { text: '*This video too big !!*' }, { quoted: mek });
+var du = await yt2.audio['128kbps'].download()
+    let senda =  await conn.sendMessage(from, { document: { url : du }, mimetype: 'audio/mpeg', fileName: yt2.title + '.mp3',caption: '> ᴍᴜsɪᴄ ʙʏ X-ʙᴏᴛ ✅' }, { quoted: mek })
+    await conn.sendMessage(from, { react: { text: '🎼', key: senda.key }})
+    
+await conn.sendMessage(from, { react: { text: '✅', key: mek.key }})
+
+} catch (e) {
+  reply("ERROR ")
+  l(e)
+}
+})
 smd({
   'pattern': "ytmp4",
   'react': "🎥",
