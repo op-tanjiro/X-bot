@@ -30,7 +30,7 @@ smd(
       await m.send("-X-:bot is thinking 🤔");
 
       // Define the API URL
-      const apiUrl = `https://api.giftedtech.my.id/api/ai/gpt-turbo?apikey=gifted&q=${encodeURIComponent(query)}`;
+      const apiUrl = `https://www.dark-yasiya-api.site/ai/chatgpt?q=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -931,7 +931,7 @@ smd(
       await m.send("Processing......");
 
       // Define the API URL
-      const apiUrl = `https://api.giftedtech.my.id/api/ai/blackbox?apikey=gifted&q=${encodeURIComponent(query)}&apikey=gifted`;
+      const apiUrl = `https://apis-starlights-team.koyeb.app/starlight/blackbox?system=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
