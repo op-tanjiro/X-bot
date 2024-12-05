@@ -47,7 +47,7 @@ const path = require ("path");
         title,
         followers,
         description,
-      } = response.data.data;
+      } = response.data.result;
 
       const caption = `
 *WhatsApp Channel Information*
@@ -95,7 +95,7 @@ smd(
         posts,
         followers,
         following,
-      } = response.data.data;
+      } = response.data.result;
 
       const caption = `
 *Instagram User Information*
@@ -136,7 +136,7 @@ smd(
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
+          `*_Error: ${response.data.result} ${response.data.data || "Unknown error"}_*`
         );
       }
 
@@ -390,15 +390,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && data.result.files.sdLink) {
-      const videoDownloadUrl = data.result.files.sdLink; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && data.result.files.sd) {
+      const videoDownloadUrl = data.result.files.sd; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
@@ -439,7 +439,7 @@ smd({
     }
   } catch (_0x86b411) {
     console.error("Caught Error:", _0x86b411); // Log any caught errors
-    return _0x2c2023.error(_0x86b411 + "\n\ncommand: fb", _0x86b411, "*_Error occurred while processing the command!!_*");
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: fbsd", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
 smd({
@@ -458,15 +458,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.hdLink) {
-      const videoDownloadUrl = data.data.hdLink; // Extract the video URL from the 'video_hd' field
+    if (data.status === "success" && data.data.hd) {
+      const videoDownloadUrl = data.data.hd; // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
