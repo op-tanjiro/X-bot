@@ -1,11 +1,13 @@
 const config = require("../config")
 const l = console.log
-const { cmd, commands } = require("../lib/plugings")
 const dl = require("@bochilteam/scraper")  
 const ytdl = require("yt-search");
 const fs = require("fs-extra")
 var videotime = 60000 // 1000 min
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require("../lib")
+const {
+  cmd
+} = require("../lib/plugins");
 cmd({
     pattern: "yts",
     alias: ["ytsearch"],
