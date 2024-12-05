@@ -29,73 +29,88 @@ smd({
   'category': "downloader",
   'filename': __filename,
   'use': "<search text>"
-}, async (m, text, { conn, command, usedPrefix }) => {
-  if (!text) throw `Use example: ${usedPrefix}${command} anna blue bird`;
-  await m.react('⏳'); // Assuming rwait is an emoji
-
+}, async (_0x213b75, _0x13be17) => {
   try {
-    const query = encodeURIComponent(text);
-    const response = await axios.get(`https://apisku-furina.vercel.app/api/downloader/play?q=${query}&apikey=indradev`);
-    const result = response.data.results[0];
+    if (!_0x13be17) {
+      return await _0x213b75.reply("*_Give Me a Search Query_*");
+    }
 
-    if (!result) throw 'Video Not Found, Try Another Title';
+    // Search for the video
+    let _0x14c1a1 = await yts(_0x13be17);
+    let _0x4f86cb = _0x14c1a1.all[0];
+    if (!_0x4f86cb) {
+      return await _0x213b75.reply("*_No results found for your search_*");
+    }
 
-    const { title, thumbnail, duration, views, uploaded, url } = result;
-
-    const captvid = `✼ ••๑⋯ ❀ Y O U T U B E ❀ ⋯⋅๑•• ✼
-❏ Title: ${title}
-❐ Duration: ${duration}
-❑ Views: ${views}
-❒ Upload: ${uploaded}
-❒ Link: ${url}
-
-> I CAN'T DOWNLOAD FOR YOU NOW WE ARE FIXING THE PROBLEM.
-⊱─━━━━⊱༻●༺⊰━━━━─⊰`;
-
-    await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid }, { quoted: m });
-
-    const audioStream = ytdl(url, {
-      filter: 'audioonly',
-      quality: 'highestaudio',
+    // Send thumbnail and video details
+    let _0x4342ba = await smdBuffer(_0x4f86cb.thumbnail);
+    await _0x213b75.bot.sendMessage(_0x213b75.jid, {
+      'image': _0x4342ba,
+      'caption': "\n*-X-:bot • ᴍᴜꜱɪᴄ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n*Title :* " + _0x4f86cb.title + "\n*Url :* " + _0x4f86cb.url + "\n*Description :* " + _0x4f86cb.timestamp + "\n*Views :* " + _0x4f86cb.views + "\n*Uploaded :* " + _0x4f86cb.ago + "\n*Author :* " + _0x4f86cb.author.name + "\n\n_-X-:bot is downloading your music..._\n"
     });
 
-    const tmpDir = os.tmpdir();
-    const audioPath = `${tmpDir}/${title}.mp3`;
-    const writableStream = fs.createWriteStream(audioPath);
+    // Use the new API to get download links
+    const downloadApiUrl = "https://www.dark-yasiya-api.site/download/ytmp3?url=" + encodeURIComponent(_0x4f86cb.url);
+    
+    let _0x4acf6c = 3; // Retry logic
+    while (_0x4acf6c > 0) {
+      try {
+        const _0x2cc463 = await axios.get(downloadApiUrl);
+        const _0x509920 = _0x2cc463.data;
+        console.log("API Response:", _0x509920);
 
-    await streamPipeline(audioStream, writableStream);
+        if (_0x509920.status && _0x509920.result.dl_link) {
+          const _0x539170 = _0x509920.result.dl_link;
+          
+          // Download the mp3 file
+          const _0x3ce5d2 = await axios({
+            'url': _0x539170,
+            'method': "GET",
+            'responseType': "stream"
+          });
+          const _0x239ef4 = path.join(__dirname, _0x4f86cb.title + ".mp3");
+          const _0x49450f = fs.createWriteStream(_0x239ef4);
+          _0x3ce5d2.data.pipe(_0x49450f);
 
-    const doc = {
-      audio: {
-        url: audioPath,
-      },
-      mimetype: 'audio/mpeg',
-      ptt: false,
-      waveform: [100, 0, 0, 0, 0, 0, 100],
-      fileName: title,
-      contextInfo: {
-        externalAdReply: {
-          showAdAttribution: true,
-          mediaType: 2,
-          mediaUrl: url,
-          title: title,
-          body: 'HERE IS YOUR SONG',
-          sourceUrl: url,
-          thumbnail: await (await conn.getFile(thumbnail)).data,
-        },
-      },
-    };
+          await new Promise((_0x46fbcf, _0x176108) => {
+            _0x49450f.on("finish", _0x46fbcf);
+            _0x49450f.on("error", _0x176108);
+          });
+          
+          console.log("Audio saved to " + _0x239ef4);
 
-    await conn.sendMessage(m.chat, doc, { quoted: m });
-
-    // Cleanup
-    await fs.promises.unlink(audioPath);
-    console.log(`Deleted audio file: ${audioPath}`);
-  } catch (error) {
-    console.error(error);
-    throw 'An error occurred while searching for YouTube videos.';
+          // Send the audio file
+          await _0x213b75.bot.sendMessage(_0x213b75.jid, {
+            'audio': {
+              'url': _0x239ef4
+            },
+            'fileName': _0x4f86cb.title + ".mp3",
+            'mimetype': "audio/mpeg"
+          }, {
+            'quoted': _0x213b75
+          });
+          
+          fs.unlinkSync(_0x239ef4); // Delete the file after sending
+          return;
+        } else {
+          console.log("Error: Could not download audio, API response:", _0x509920);
+          await _0x213b75.reply("*_Error: Could not download the audio. Please try again later!_*");
+          return;
+        }
+      } catch (_0x2b8c59) {
+        console.error("Retry Error:", _0x2b8c59);
+        _0x4acf6c--;
+        if (_0x4acf6c === 0) {
+          await _0x213b75.reply("*_Error: Could not download the audio after multiple attempts. Please try again later!_*");
+        }
+      }
+    }
+  } catch (_0x3c9fcf) {
+    console.error("Caught Error:", _0x3c9fcf);
+    return _0x213b75.error(_0x3c9fcf + "\n\ncommand: playy", _0x3c9fcf, "*_File not found!!_*");
   }
-  });
+});
+    
     smd({
   'pattern': "ytmp4",
   'react': "🎥",
