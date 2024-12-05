@@ -740,10 +740,10 @@ smd({
       return await _0x2c2023.reply("*_Provide a TikTok video URL_*");
     }
 
-    const videoUrl = _0x4ec99f; // Facebook video URL
+    const videoUrl = _0x4ec99f; // Tiktok video URL
 
-    // Call the Facebook downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/tiktokdlv3?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
+    // Call the Tiktok downloader API
+    const apiUrl = `https://itzpire.com/download/tiktok?url=${encodeURIComponent(videoUrl)}&type=v2`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
