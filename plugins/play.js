@@ -13,7 +13,7 @@ const {  download } = require("@bochilteam/scraper")
 const googleTTS = require("google-tts-api");
 const search = require("yt-search");
 const yts = require("secktor-pack");
-const fs = require("fs-extra");
+const fs = require("fs");
 const axios = require("axios");
 const fetch = require("node-fetch");
 const path = require("path");
@@ -89,7 +89,7 @@ smd({
             'quoted': _0x213b75
           });
           
-          fs.unlinkSync(); // Delete the file after sending
+          fs.unlinkSync(_0x239ef4); // Delete the file after sending
           return;
         } else {
           console.log("Error: Could not download audio, API response:", _0x509920);
