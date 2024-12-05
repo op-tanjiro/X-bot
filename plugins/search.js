@@ -111,7 +111,7 @@ smd(
     try {
       if (!songName) {
         return await m.send("*_Please provide a song name!_*");
-      }
+      
 
       const apiUrl = `https://api.popcat.xyz/lyrics?song=${encodeURIComponent(
         songName
