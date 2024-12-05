@@ -112,7 +112,7 @@ smd(
         return await m.send("*_Please provide a song name!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=${encodeURIComponent(
+      const apiUrl = `https://itzpire.com/search/lyrics?query=${encodeURIComponent(
         songName
       )}`;
       const response = await fetch(apiUrl);
@@ -129,13 +129,13 @@ smd(
         return await m.send("*_An error occurred while fetching the data._*");
       }
 
-      const { Artist, Lyrics, Title } = data.result;
+      const { artist, lyrics, title } = data.result;
 
       const lyricsMessage =`
-*Song:* ${Title}
-*Artist:* ${Artist}
+*Song:* ${title}
+*Artist:* ${artist}
 
-${Lyrics}
+${lyrics}
 `;
 
       await m.send(lyricsMessage);
