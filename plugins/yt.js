@@ -14,10 +14,7 @@ smd({
     desc: "Search and get details from youtube.",
     category: "search",
     filename: __filename
-
-},
-
-async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+}, async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 if (!q) return reply('*Please give me words to search*')
 try {
@@ -49,7 +46,7 @@ smd({
 
 },
 
-async(conn, mek, m,{from, l, quoted, body, isCmd, darkneo, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async (_0x213b75, q, _0x13be17) => {
 try{
 if (!q) return reply('*Please give me quary to download*')
 let yts = require("yt-search")
@@ -102,7 +99,7 @@ smd({
     filename: __filename
 },
 
-async(conn, mek, m,{from, l, quoted, body, isCmd, darkneo, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(_0x213b75, q, _0x13be17) => {
 try{
 if (!q) return reply('Please give me quary to download')
 let yts = require("yt-search")
