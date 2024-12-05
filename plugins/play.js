@@ -11,7 +11,7 @@ const {
 } = require("../lib");
 const { search, download } = require("@bochilteam/scraper")
 const googleTTS = require("google-tts-api");
-const ytdl = require("X-bot");
+const ytdl = require("yt-search");
 const yts = require("secktor-pack");
 const fs = require("fs-extra");
 const axios = require("axios");
