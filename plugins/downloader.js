@@ -38,7 +38,7 @@ const path = require ("path");
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
+          `*_Error: ${response.status.result} ${response.status.result || "Unknown error"}_*`
         );
       }
 
@@ -397,8 +397,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && data.result.files.sd) {
-      const videoDownloadUrl = data.result.files.sd; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && status.result.title.sd) {
+      const videoDownloadUrl = status.result.title.sd; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
