@@ -118,7 +118,7 @@ smd(
       await m.send("Alya is searching for the song based on your lyrics 🎶");
 
       // Define the API URL for fetching song details
-      const apiUrl = `https://api.popcat.xyz/lyrics?song=${encodeURIComponent(query)}`;
+      const apiUrl = `https://itzpire.com/search/lyrics?query=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -130,7 +130,7 @@ smd(
       // Get the result from the API response
       const data = await response.json();
 
-      if (!title.title || !data.result || !data.image.title) {
+      if (!data.title || !data.result || !data.image.title) {
         return await m.send(`No song found matching the lyrics: "${query}".`);
       }
 
