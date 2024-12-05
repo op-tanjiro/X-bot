@@ -728,7 +728,7 @@ smd(
    }
  });
 smd({
-  pattern: "tiktokdl", // Command name remains 'fb'
+  pattern: "tikdl", // Command name remains 'fb'
   alias: ["tkdlvid"],
   desc: "Downloads video from a Tiktok link.",
   category: "downloader",
@@ -743,14 +743,14 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://itzpire.com/download/tiktok?url=${encodeURIComponent(videoUrl)}&type=v2`;
+    const apiUrl = `https://api.fgmods.xyz/api/downloader/tiktok?url=${encodeURIComponent(videoUrl)}&apikey=g5PtmjBW`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.video) {
+    if (data.status === "true" && data.data.video) {
       const videoDownloadUrl = data.data.video; // Extract the video URL from the 'video_sd' field
 
       // Download the video file
