@@ -1,11 +1,11 @@
-const config = require('../config')
+const config = require("../config")
 const l = console.log
-const { smd, cmd, commands } = require('../command')
-const dl = require('@bochilteam/scraper')  
-const ytdl = require('yt-search');
-const fs = require('fs-extra')
+const { cmd, commands } = require("../lib/plugings")
+const dl = require("@bochilteam/scraper")  
+const ytdl = require("yt-search");
+const fs = require("fs-extra")
 var videotime = 60000 // 1000 min
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require('../lib/plugins')
+const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require("../lib")
 cmd({
     pattern: "yts",
     alias: ["ytsearch"],
