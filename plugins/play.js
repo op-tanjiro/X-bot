@@ -5,9 +5,10 @@ const {
   fancytext,
   yt,
   getBuffer,
+  smdBuffer,
   prefix,
   Config,
-} = require("../lib/plugins");
+} = require("../lib");
 const {  download } = require("@bochilteam/scraper")
 const googleTTS = require("google-tts-api");
 const search = require("yt-search");
