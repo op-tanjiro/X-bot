@@ -16,7 +16,7 @@ const yts = require("yt-search");
 const fs = require("fs-extra");
 const axios = require("axios");
 const fetch = require("node-fetch");
-var videotime = 2000;
+var videotime = 20000;
 const { cmd } = require("../lib/plugins");
 const path = require ("path");
  smd(
@@ -237,7 +237,7 @@ smd(
      let _0x27aa70 = _0x2a4fb1.split("/addstickers/")[1];
 let {
        result: _0x4a601d
-     } = await axios.getJson("https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getStickerSet?name=" + encodeURIComponent(_0x27aa70) + " ");
+     } = await axios.Json("https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getStickerSet?name=" + encodeURIComponent(_0x27aa70) + " ");
      let _0x54b45a = _0x155c01.split("|")[1] || "";
      let _0x56bec3 = "Total stickers: " + _0x4a601d.stickers.length + "\n*Estimated complete in:* " + _0x4a601d.stickers.length * 1.5 + " seconds\nKeep in mind that there is a chance of a ban if used frequently";
      if (_0x4a601d.is_animated) {
