@@ -38,7 +38,7 @@ const path = require ("path");
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.code} ${response.data.message || "Unknown error"}_*`
+          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
         );
       }
 
@@ -84,7 +84,7 @@ smd(
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.code} ${response.data.message || "Unknown error"}_*`
+          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
         );
       }
 
@@ -100,7 +100,7 @@ smd(
       const caption = `
 *Instagram User Information*
 
-*Username:* ${igUsername}
+*Username:* ${username}
 *Full Name:* ${fullName}
 *Bio:* ${bio || "NO BIO"}
 
@@ -136,7 +136,7 @@ smd(
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.code} ${response.data.message || "Unknown error"}_*`
+          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
         );
       }
 
@@ -151,7 +151,7 @@ smd(
         following,
         created_at,
         updated_at,
-      } = response.data.data;
+      } = response.data.result;
 
       const caption = `
 *GitHub User Information*
@@ -198,13 +198,13 @@ smd(
        }
  
        const data = await response.json();
-       const result = data.result;
+       const result = data.data;
  
        if (!result || !result.medias || !result.medias.length) {
          return await m.send("*_No media found!_*");
        }
  
-       const { title, thumbnail, medias } = result;
+       const { title, thumbnail, type } = result;
        const caption = `*Title:* ${title}\n\n*Source:* ${medias[0].source}`;
  
        await m.bot.sendFromUrl(m.from, thumbnail, caption, m, {}, "image");
@@ -390,15 +390,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/facebook?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && data.result.files.low) {
-      const videoDownloadUrl = data.result.files.low; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && data.result.files.sdLink) {
+      const videoDownloadUrl = data.result.files.sdLink; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
@@ -458,15 +458,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/facebook?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.video_hd) {
-      const videoDownloadUrl = data.data.video_hd; // Extract the video URL from the 'video_hd' field
+    if (data.status === "success" && data.data.hdLink) {
+      const videoDownloadUrl = data.data.hdLink; // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -526,15 +526,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/fbdl?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.audio) {
-      const audioDownloadUrl = data.data.audio; // Extract the audio URL from the 'audio' field
+    if (data.status === "success" && data.data.sd) {
+      const audioDownloadUrl = data.data.sd; // Extract the audio URL from the 'audio' field
 
       // Download the audio file
       const audioResponse = await axios({
@@ -743,15 +743,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://itzpire.com/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "true" && data.data.video) {
-      const videoDownloadUrl = data.data.video; // Extract the video URL from the 'video_sd' field
+    if (data.status === "true" && data.data.hdVideo) {
+      const videoDownloadUrl = data.data.hdVideo; // Extract the video URL from the 'hdVideo' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -1000,7 +1000,7 @@ smd({
     const pinterestUrl = _0x4ec99f; // Pinterest URL
 
     // Call the Pinterest downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/pinterestdl?apikey=gifted&url=${encodeURIComponent(pinterestUrl)}`;
+    const apiUrl = `https://apis-starlights-team.koyeb.app/starlight/pindl?url=${encodeURIComponent(pinterestUrl)}`;
     
     const response = await axios.get(apiUrl);
     const data = response.data;
@@ -1069,7 +1069,7 @@ smd({
     const pinterestUrl = _0x13be17.trim();
 
     // Use the new API to get download links
-    const downloadApiUrl = "https://api.giftedtech.my.id/api/download/pinterestdl?apikey=gifted&url=" + encodeURIComponent(pinterestUrl);
+    const downloadApiUrl = "https://apis-starlights-team.koyeb.app/starlight/pindl?url=" + encodeURIComponent(pinterestUrl);
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
@@ -1079,7 +1079,7 @@ smd({
         console.log("API Response:", _0x509920);
 
         if (_0x509920.status && _0x509920.result.success) {
-          const videoUrl = _0x509920.result.data.image;
+          const videoUrl = _0x509920.result.data.url;
           
           // Download the video file
           const _0x3ce5d2 = await axios({
