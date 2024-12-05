@@ -743,7 +743,7 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://api.fgmods.xyz/api/downloader/tiktok?url=${encodeURIComponent(videoUrl)}&apikey=g5PtmjBW`;
+    const apiUrl = `https://itzpire.com/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
