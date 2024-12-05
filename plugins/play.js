@@ -22,7 +22,7 @@ var videotime = 2000;
 const { cmd } = require("../lib");
 
 smd({
-  'pattern': "play",
+  'pattern': "pllay",
   'react': "🎵",
   'alias': ["music"],
   'desc': "Downloads audio from YouTube.",
