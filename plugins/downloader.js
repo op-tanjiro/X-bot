@@ -33,9 +33,7 @@ const path = require ("path");
         return await m.send("*_Please provide a WhatsApp channel URL!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/wachannel?apikey=gifted&url=${encodeURIComponent(
-        channelUrl
-      )}`;
+      const apiUrl = `https://api.giftedtech.my.id/api/stalk/wachannel?apikey=gifted&url=${encodeURIComponent(channelUrl)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
@@ -81,9 +79,7 @@ smd(
         return await m.send("*_Please provide an Instagram username!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/igstalk?apikey=gifted&username=${encodeURIComponent(
-        username
-      )}`;
+      const apiUrl = `https://api.giftedtech.my.id/api/stalk/igstalk?apikey=gifted&username=${encodeURIComponent(username)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
@@ -135,9 +131,7 @@ smd(
         return await m.send("*_Please provide a GitHub username!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/gitstalk?apikey=gifted&username=${encodeURIComponent(
-        username
-      )}`;
+      const apiUrl = `https://api.giftedtech.my.id/api/stalk/gitstalk?apikey=gifted&username=${encodeURIComponent(username)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
@@ -194,9 +188,7 @@ smd(
          return await m.send("*_Please provide a URL!_*");
        }
  
-       const apiUrl = `https://api.maher-zubair.tech/download/alldownload2?url=${encodeURIComponent(
-         url
-       )}`;
+       const apiUrl = `https://itzpire.com/download/aio?url=${encodeURIComponent(url)}`;
        const response = await fetch(apiUrl);
  
        if (!response.ok) {
@@ -309,7 +301,7 @@ let {
       return await m.send("*_Please provide an Instagram URL!_*");
     }
 
-    const apiUrl = `https://api.giftedtech.my.id/api/download/instadl?apikey=gifted&type=video&url=${encodeURIComponent(url)}&apikey=gifted`;
+    const apiUrl = `https://api.giftedtech.my.id/api/download/instadl?apikey=gifted&type=video&url=${encodeURIComponent(url)}`;
     const response = await fetch(apiUrl);
     
     if (!response.ok) {
