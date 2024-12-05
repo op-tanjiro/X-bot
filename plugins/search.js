@@ -102,23 +102,20 @@ async(m) => {
 smd(
   {
     pattern: "lyrics",
-    desc: "Get song details based on provided lyrics.",
-    category: "fun",
+    desc: "Get the lyrics of a song.",
+    category: "search",
     filename: __filename,
+    use: "<song_name>",
   },
-  async (m) => {
+  async (m, songName) => {
     try {
-      // Extract the lyrics query from the message
-      const query = m.text.split(' ').slice(1).join(' ');
-      if (!query) {
-        return await m.send("Please provide some lyrics to search for, e.g., `.lyrics I got this feeling inside my bones`.");
+      if (!songName) {
+        return await m.send("*_Please provide a song name!_*");
       }
 
-      // Send a loading message
-      await m.send("Alya is searching for the song based on your lyrics 🎶");
-
-      // Define the API URL for fetching song details
-      const apiUrl = `https://itzpire.com/search/lyrics?query=${encodeURIComponent(query)}`;
+      const apiUrl = `https://itzpire.com/search/lyrics?query=${encodeURIComponent(
+        songName
+      )}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -127,26 +124,27 @@ smd(
         );
       }
 
-      // Get the result from the API response
       const data = await response.json();
 
-      if (!status.success || !data.title || !data.title.album) {
-        return await m.send(`No song found matching the lyrics: "${query}".`);
+      if (data.status !== success) {
+        return await m.send("*_An error occurred while fetching the data._*");
       }
 
-      // Destructure the result to extract relevant fields
-      const { title, album, lyrics } = data.result;
-      const albumInfo = album ? `Album: ${album}` : "Album: N/A";
-      const message = `*Song Found:*\n\n*Title:* ${title}\n*${albumInfo}*\n\n*Lyrics:*\n\n${lyrics}`;
+      const { artist, lyrics, title } = data.result;
 
-      // Send the final response with song details
-      await m.send(message);
+      const lyricsMessage =`
+*Song:* ${title}
+*Artist:* ${artist}
+
+${lyrics}
+`;
+
+      await m.send(lyricsMessage);
     } catch (e) {
       await m.error(`${e}\n\ncommand: lyrics`, e);
     }
   }
 );
-
 
            
 smd(
