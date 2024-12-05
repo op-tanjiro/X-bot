@@ -19,7 +19,7 @@ const axios = require("axios");
 const fetch = require("node-fetch");
 const path = require("path");
 var videotime = 2000;
-const { cmd } = require("../lib/plugins");
+const { cmd } = require("../lib");
 
 smd({
   'pattern': "play",
@@ -113,14 +113,14 @@ smd({
 smd({  
   pattern: "play2",
     alias: ["yta","song"],
-    use: '.play koun umar',
+    use: "<query>",
     react: "🎧",
     desc: "Search & download yt song.",
     category: "download",
     filename: __filename
 },
 
-async(conn, q, mek, m,{from, l, quoted, body, isCmd, darkneo, args, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(conn, q, mek, m, anu) => {
 try{
 if (!q) return reply('Please give me quary to download')
 let yts = require("yt-search")
