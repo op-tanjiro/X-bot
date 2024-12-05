@@ -29,40 +29,74 @@ smd({
   'category': "downloader",
   'filename': __filename,
   'use': "<search text>"
-}, async (_0x213b75, _0x13be17) => {
+}, async (m, { conn, command, text, usedPrefix }) => {
+  if (!text) throw `Use example: ${usedPrefix}${command} anna blue bird`;
+  await m.react('⏳'); // Assuming rwait is an emoji
+
   try {
-    if (!_0x13be17) {
-      return await _0x213b75.reply("*_Give Me a Search Query_*");
-    }
+    const query = encodeURIComponent(text);
+    const response = await axios.get(`https://apisku-furina.vercel.app/api/downloader/play?q=${query}&apikey=indradev`);
+    const result = response.data.results[0];
 
-    // Search for the video
-    let _0x14c1a1 = await yts(_0x13be17);
-    let _0x4f86cb = _0x14c1a1.all[0];
-    if (!_0x4f86cb) {
-      return await _0x213b75.reply("*_No results found for your search_*");
-    }
+    if (!result) throw 'Video Not Found, Try Another Title';
 
-    // Send thumbnail and video details
-    let _0x4342ba = await smdBuffer(_0x4f86cb.thumbnail);
-    await _0x213b75.bot.sendMessage(_0x213b75.jid, {
-      'image': _0x4342ba,
-      'caption': "\n*-X-:bot • ᴍᴜꜱɪᴄ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n*Title :* " + _0x4f86cb.title + "\n*Url :* " + _0x4f86cb.url + "\n*Description :* " + _0x4f86cb.timestamp + "\n*Views :* " + _0x4f86cb.views + "\n*Uploaded :* " + _0x4f86cb.ago + "\n*Author :* " + _0x4f86cb.author.name + "\n\n_-X-:bot is downloading your music..._\n"
+    const { title, thumbnail, duration, views, uploaded, url } = result;
+
+    const captvid = `✼ ••๑⋯ ❀ Y O U T U B E ❀ ⋯⋅๑•• ✼
+❏ Title: ${title}
+❐ Duration: ${duration}
+❑ Views: ${views}
+❒ Upload: ${uploaded}
+❒ Link: ${url}
+
+> I CAN'T DOWNLOAD FOR YOU NOW WE ARE FIXING THE PROBLEM.
+⊱─━━━━⊱༻●༺⊰━━━━─⊰`;
+
+    await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid }, { quoted: m });
+
+    const audioStream = ytdl(url, {
+      filter: 'audioonly',
+      quality: 'highestaudio',
     });
-await console.sendMessage(from, { image: { url: _0x4f86cb.thumbnail }, caption: cap}, { quoted: mek })
-const yt2 = await dl.youtubedl(_0x4f86cb.url)
-if (yt2.audio['128kbps'].fileSizeH.includes('MB') && yt2.audio['128kbps'].fileSizeH.replace(' MB','') >= config.MAX_SIZE) return await console.sendMessage(from, { text: '*This video too big !!*' }, { quoted: mek });
-var du = await yt2.audio['128kbps'].download()
-    let senda =  await console.sendMessage(from, { document: { url : du }, mimetype: 'audio/mpeg', fileName: yt2.title + '.mp3',caption: '> ᴍᴜsɪᴄ ʙʏ X-ʙᴏᴛ ✅' }, { quoted: mek })
-    await console.sendMessage(from, { react: { text: '🎼', key: senda.key }})
-    
-await console.sendMessage(from, { react: { text: '✅', key: mek.key }})
 
-} catch (e) {
-  reply("ERROR ")
-  l(e)
-}
-})
-smd({
+    const tmpDir = os.tmpdir();
+    const audioPath = `${tmpDir}/${title}.mp3`;
+    const writableStream = fs.createWriteStream(audioPath);
+
+    await streamPipeline(audioStream, writableStream);
+
+    const doc = {
+      audio: {
+        url: audioPath,
+      },
+      mimetype: 'audio/mpeg',
+      ptt: false,
+      waveform: [100, 0, 0, 0, 0, 0, 100],
+      fileName: title,
+      contextInfo: {
+        externalAdReply: {
+          showAdAttribution: true,
+          mediaType: 2,
+          mediaUrl: url,
+          title: title,
+          body: 'HERE IS YOUR SONG',
+          sourceUrl: url,
+          thumbnail: await (await conn.getFile(thumbnail)).data,
+        },
+      },
+    };
+
+    await conn.sendMessage(m.chat, doc, { quoted: m });
+
+    // Cleanup
+    await fs.promises.unlink(audioPath);
+    console.log(`Deleted audio file: ${audioPath}`);
+  } catch (error) {
+    console.error(error);
+    throw 'An error occurred while searching for YouTube videos.';
+  }
+  }
+    smd({
   'pattern': "ytmp4",
   'react': "🎥",
   'alias': ["videourl"],
