@@ -8,10 +8,10 @@ const {
   smdBuffer,
   prefix,
   Config,
-} = require("../lib");
-const { search, download } = require("@bochilteam/scraper")
+} = require("../lib/plugins");
+const {  download } = require("@bochilteam/scraper")
 const googleTTS = require("google-tts-api");
-const ytdl = require("yt-search");
+const search = require("yt-search");
 const yts = require("secktor-pack");
 const fs = require("fs-extra");
 const axios = require("axios");
@@ -119,7 +119,7 @@ smd({
     filename: __filename
 },
 
-async(conn, mek, m,{from, l, quoted, body, isCmd, darkneo, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(conn, q, mek, m,{from, l, quoted, body, isCmd, darkneo, args, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 if (!q) return reply('Please give me quary to download')
 let yts = require("yt-search")
