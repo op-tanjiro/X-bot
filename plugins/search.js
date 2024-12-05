@@ -102,43 +102,52 @@ async(m) => {
 smd(
   {
     pattern: "lyrics",
-    desc: "Get the lyrics of a song.",
-    category: "search",
+    desc: "Get song details based on provided lyrics.",
+    category: "fun",
     filename: __filename,
-    use: "<song_name>",
   },
-  async (m, songName) => {
+  async (m) => {
     try {
-      if (!songName) {
-        return await m.send("*_Please provide a song name!_*");
-     }
-    }
+      // Extract the lyrics query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide some lyrics to search for, e.g., `.lyrics I got this feeling inside my bones`.");
+      }
 
-      const apiUrl = `https://api.popcat.xyz/lyrics?song=${encodeURIComponent(
-        songName
-      )}`;
+      // Send a loading message
+      await m.send("Alya is searching for the song based on your lyrics 🎶");
+
+      // Define the API URL for fetching song details
+      const apiUrl = `https://api.popcat.xyz/lyrics?song=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
         return await m.send(
           `*_Error: ${response.status} ${response.statusText}_*`
         );
-       
-      const { artist, lyrics, title } = data.result;
+      }
 
-      const lyricsMessage =`
-*Song:* ${title}
-*Artist:* ${artist}
+      // Get the result from the API response
+      const data = await response.json();
 
-${lyrics}
-`;
+      if (!{.title || !data.result || !data.result.title) {
+        return await m.send(`No song found matching the lyrics: "${query}".`);
+      }
 
-      await m.send(lyricsMessage);
+      // Destructure the result to extract relevant fields
+      const { title, album, lyrics } = data.result;
+      const albumInfo = album ? `Album: ${album}` : "Album: N/A";
+      const message = `*Song Found:*\n\n*Title:* ${title}\n*${albumInfo}*\n\n*Lyrics:*\n\n${lyrics}`;
+
+      // Send the final response with song details
+      await m.send(message);
     } catch (e) {
       await m.error(`${e}\n\ncommand: lyrics`, e);
     }
   }
-)
+);
+
+
            
 smd(
   {
