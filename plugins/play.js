@@ -29,7 +29,7 @@ smd({
   'category': "downloader",
   'filename': __filename,
   'use': "<search text>"
-}, async (m, text, { conn, command, text, usedPrefix }) => {
+}, async (m, text, { conn, command, usedPrefix }) => {
   if (!text) throw `Use example: ${usedPrefix}${command} anna blue bird`;
   await m.react('⏳'); // Assuming rwait is an emoji
 
