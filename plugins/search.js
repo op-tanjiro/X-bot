@@ -148,7 +148,7 @@ ${Lyrics}
            
 smd(
   {
-    pattern: "lyrics",
+    pattern: "lyrics2",
     desc: "Get the lyrics of a song.",
     category: "search",
     filename: __filename,
