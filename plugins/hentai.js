@@ -112,8 +112,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && data.result.files.low) {
-      const videoDownloadUrl = data.result.files.low; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && data.result.files.high) {
+      const videoDownloadUrl = data.result.files.high; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
@@ -154,6 +154,6 @@ smd({
     }
   } catch (_0x86b411) {
     console.error("Caught Error:", _0x86b411); // Log any caught errors
-    return _0x2c2023.error(_0x86b411 + "\n\ncommand: ju", _0x86b411, "*_Error occurred while processing the command!!_*");
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: xdl", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
