@@ -128,7 +128,7 @@ smd({
     }
 
     // Construct the API URL for removebg
-    const apiUrl = `https://api.giftedtech.my.id/api/tools/removebg?apikey=gifted&url=${encodeURIComponent(mediaUrl.url)}`;
+    const apiUrl = `https://itzpire.com/ai/remove-bg?url=${encodeURIComponent(mediaUrl.url)}`;
 
     // Fetch the response from the API
     const response = await fetch(apiUrl);
@@ -506,6 +506,81 @@ smd(
       // Log the error and send an error message to the user
       console.error(e);
       await m.error(`${e}\n\ncommand:  dalle`, e);
+    }
+  }
+);
+smd(
+  {
+    pattern: "gpt-pic",
+    react: "🖼️",
+    desc: "Generate an AI photo from text prompt.",
+    category: "ai",
+    filename: __filename,
+    use: "<query>",
+  },
+  async (m, query) => {
+    try {
+      // Check if query is provided
+      if (!query) {
+        return await m.send("*_Please provide a prompt for the AI image generator!_*");
+      }
+
+      // Construct the API URL with the provided query
+      const apiUrl = `https://itzpire.com/ai/gpt-pict?q=${encodeURIComponent(query)}`;
+      
+      // Fetch the response from the API
+      const response = await fetch(apiUrl);
+
+      // Check if the response is not OK
+      if (!response.ok) {
+        return await m.send(`*_Error: ${response.status} ${response.statusText}_*`);
+      }
+
+      // Get the content type of the response
+      const contentType = response.headers.get('content-type');
+
+      if (contentType && contentType.startsWith('image')) {
+        // If the response is an image, get the image URL
+        const photoUrl = response.url;
+
+        // Send the photo to the user
+        await m.bot.sendFromUrl(
+          m.from,
+          photoUrl,
+          "*Made by -X-:bot*:",
+          m,
+          {},
+          "image"
+        );
+      } else if (contentType && contentType.includes('application/json')) {
+        // If the response is JSON, parse it
+        const data = await response.json();
+
+        // Check if the status in the response data is not 200
+        if (data.status !== 200) {
+          return await m.send("*_An error occurred while fetching the data._*");
+        }
+
+        // Get the photo URL from the response data
+        const photoUrl = data.result;
+
+        // Send the photo to the user
+        await m.bot.sendFromUrl(
+          m.from,
+          photoUrl,
+          "*Made by -X-:bot*:",
+          m,
+          {},
+          "image"
+        );
+      } else {
+        // Handle unexpected content types
+        return await m.send("*_Unexpected content type received from the API._*");
+      }
+    } catch (e) {
+      // Log the error and send an error message to the user
+      console.error(e);
+      await m.error(`${e}\n\ncommand:  gpt-pic`, e);
     }
   }
 );
@@ -931,7 +1006,7 @@ smd(
       await m.send("Processing......");
 
       // Define the API URL
-      const apiUrl = `https://api.blackbox.ai/?&q=${encodeURIComponent(query)}`;
+      const apiUrl = `https://itzpire.com/ai/blackbox-ai?q=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
