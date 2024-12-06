@@ -397,8 +397,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.success && data.result && data.result.files && status.result.sd.url) {
-      const videoDownloadUrl = status.result.sd.url; // Extract the low-quality video URL
+    if (data.status === "200" && data.result.sd_video) {
+      const videoDownloadUrl = data.result.sd_video;  // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
@@ -458,15 +458,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.giftedtech.my.id/api/download/facebook?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.hd) {
-      const videoDownloadUrl = data.data.hd; // Extract the video URL from the 'video_hd' field
+    if (data.status === "success" && data.result.hd_video) {
+      const videoDownloadUrl = data.result.hd_video;  // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -533,8 +533,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "success" && data.data.sd) {
-      const audioDownloadUrl = data.data.sd; // Extract the audio URL from the 'audio' field
+    if (data.status === "success" && data.data.music) {
+      const videoDownloadUrl = data.data.music;  // Extract the audio URL from the 'audio' field
 
       // Download the audio file
       const audioResponse = await axios({
