@@ -33,7 +33,7 @@ const path = require ("path");
         return await m.send("*_Please provide a WhatsApp channel URL!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/wachannel?apikey=gifted&url=${encodeURIComponent(channelUrl)}`;
+      const apiUrl = `https://itzpire.com/stalk/whatsapp-channel?url=${encodeURIComponent(channelUrl)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
@@ -47,7 +47,7 @@ const path = require ("path");
         title,
         followers,
         description,
-      } = response.data.result;
+      } = response.data.data;
 
       const caption = `
 *WhatsApp Channel Information*
@@ -79,12 +79,12 @@ smd(
         return await m.send("*_Please provide an Instagram username!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/igstalk?apikey=gifted&username=${encodeURIComponent(username)}`;
+      const apiUrl = `https://itzpire.com/stalk/instagram?username=${encodeURIComponent(username)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.result} ${response.data.result || "Unknown error"}_*`
+          `*_Error: ${response.data.code} ${response.data.message || "Unknown error"}_*`
         );
       }
 
@@ -95,7 +95,7 @@ smd(
         posts,
         followers,
         following,
-      } = response.data.result;
+      } = response.data.data;
 
       const caption = `
 *Instagram User Information*
@@ -131,7 +131,7 @@ smd(
         return await m.send("*_Please provide a GitHub username!_*");
       }
 
-      const apiUrl = `https://api.giftedtech.my.id/api/stalk/gitstalk?apikey=gifted&username=${encodeURIComponent(username)}`;
+      const apiUrl = `https://itzpire.com/stalk/github-user?username=${encodeURIComponent(username)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data.status !== "success") {
@@ -151,7 +151,7 @@ smd(
         following,
         created_at,
         updated_at,
-      } = response.data.result;
+      } = response.data.data;
 
       const caption = `
 *GitHub User Information*
