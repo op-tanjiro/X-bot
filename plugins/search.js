@@ -153,7 +153,7 @@ smd({
    desc: "Search App",
    category: "search",
    filename: __filename,
-   use: "<Search Query>"
+   use: "<Query>"
  }, async (_0x19d516, _0x1cb962) => {
    try {
      if (!_0x1cb962) {
@@ -248,7 +248,54 @@ smd({
 
         }catch(e){return await message.error(`${e}\n\n command: weather`,e,`*_Please provide valid city name!_*`) }
         }
-    )
+    );
+smd(
+  {
+    pattern: "sing",
+    desc: "Get the lyrics of a song.",
+    category: "search",
+    filename: __filename,
+    use: "<song_name>",
+  },
+  async (m, songName) => {
+    try {
+      if (!songName) {
+        return await m.send("*_Please provide a song name!_*");
+      }
+
+      const apiUrl = `https://itzpire.com/search/lyrics?query=${encodeURIComponent(
+        songName
+      )}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.status !== success) {
+        return await m.send("*_An error occurred while fetching the data._*");
+      }
+
+      const { artist, lyrics, title } = data.data;
+
+      const lyricsMessage =`
+*Song:* ${title}
+*Artist:* ${artist}
+
+${lyrics}
+`;
+
+      await m.send(lyricsMessage);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: sing`, e);
+    }
+  }
+);
+
 //---------------------------------------------------------------------------
 smd({
          pattern: "npm",
