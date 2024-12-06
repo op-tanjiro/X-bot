@@ -931,7 +931,7 @@ smd(
       await m.send("Processing......");
 
       // Define the API URL
-      const apiUrl = `https://apis-starlights-team.koyeb.app/starlight/blackbox?system=${encodeURIComponent(query)}`;
+      const apiUrl = `https://api.blackbox.ai/?&q=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
