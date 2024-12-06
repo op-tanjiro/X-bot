@@ -31,29 +31,10 @@ cmd({
 });
 let mtypes = ["imageMessage"];
 smd({
-  'pattern': "fullpp",
-  'desc': "Set full screen profile picture",
+  'pattern': "rpp",
+  'desc': "remove  screen profile picture",
   'category': 'whatsapp',
   'use': "<reply to image>",
-  'fromMe': true,
-  'filename': __filename
-}, async _0x29e300 => {
-  try {
-    let _0x19d7fb = mtypes.includes(_0x29e300.mtype) ? _0x29e300 : _0x29e300.reply_message;
-    if (!_0x19d7fb || !mtypes.includes(_0x19d7fb?.["mtype"] || "need_Media")) {
-      return await _0x29e300.reply("*Reply to an image, dear*");
-    }
-    return await updateProfilePicture(_0x29e300, _0x29e300.user, _0x19d7fb, "fullpp");
-  } catch (_0x24ab42) {
-    await _0x29e300.error(_0x24ab42 + "\n\ncommand : fullpp", _0x24ab42);
-  }
-  {}
-});
-smd({
-  'pattern': "rpp",
-  'desc': "remove profile picture",
-  'category': "whatsapp",
-  'use': "<chat>",
   'fromMe': true,
   'filename': __filename
 }, async _0x576c66 => {
@@ -64,6 +45,32 @@ smd({
     await _0x576c66.error(_0x5426bd + "\n\ncommand : rpp", _0x5426bd);
   }
 });
+smd({
+  'pattern': "pp",
+  'desc': "remove profile picture",
+  'category': "whatsapp",
+  'use': "<chat>",
+  'fromMe': true,
+  'filename': __filename
+}, async (_0x4f9f9f) => {
+    try {
+      let _0x3d8b6f = mtypes.includes(_0x4f9f9f.mtype)
+        ? _0x4f9f9f
+        : _0x4f9f9f.reply_message;
+      if (!_0x3d8b6f || !mtypes.includes(_0x3d8b6f?.mtype || "need_Media")) {
+        return await _0x4f9f9f.reply("*Reply to an image, dear*");
+      }
+      return await updateProfilePicture(
+        _0x4f9f9f,
+        _0x4f9f9f.user,
+        _0x3d8b6f,
+        "pp"
+      );
+    } catch (_0x18308f) {
+      await _0x4f9f9f.error(_0x18308f + "\n\ncommand : pp", _0x18308f);
+    }
+  }
+);
 smd({
   'pattern': "bbio",
   'desc': "update profile status of whatsapp",
@@ -108,18 +115,21 @@ cmd({
   'desc': "Save Message to log number",
   'category': "whatsapp",
   'filename': __filename
-}, async (_0x3516c9, _0x59b822, {
-  cmdName: _0xc432b
-}) => {
-  try {
-    let _0x575bb6 = _0x3516c9.reply_message;
-    if (!_0x575bb6) {
-      return await _0x3516c9.send("*Uhh Please, reply to to a Message*");
+}, async (_0x23a729, _0x5ad999, { cmdName: _0x2cb44f }) => {
+    try {
+      let _0x48ef43 = _0x23a729.reply_message;
+      if (!_0x48ef43) {
+        return await _0x23a729.send("*Uhh Please, reply to to a Message*");
+      }
+      let _0x114513 = await _0x23a729.bot.forwardOrBroadCast(
+        _0x23a729.user,
+        _0x48ef43
+      );
+    } catch (_0x43530a) {
+      await _0x23a729.error(_0x43530a + "\n\ncommand : save", _0x43530a);
     }
-  } catch (_0x311f45) {
-    await _0x3516c9.error(_0x311f45 + "\n\ncommand : save", _0x311f45);
   }
-});
+);
 cmd({
   'pattern': "quoted",
   'desc': "get reply Message from Replied Message",
