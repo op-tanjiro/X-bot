@@ -147,35 +147,40 @@ ${Lyrics}
 );
 
            
-smd(
-  {
-    pattern: "lyrics2",
-    desc: "Get the lyrics of a song.",
-    category: "search",
-    filename: __filename,
-    use: "<song_name>",
-  },
-   async (context) => {
-
-const { client, m, text } = context;
-
-
-const Genius = require("genius-lyrics");  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); 
-
- try { 
- if (!text) return m.reply("Provide a song name!"); 
- const searches = await Client.songs.search(text); 
- const firstSong = searches[0]; 
-
- const lyrics = await firstSong.lyrics(); 
- await client.sendMessage(m.chat, { text: lyrics}, { quoted: m }); 
- } catch (error) { 
-             m.reply(`I did not find any lyrics for ${text}. Try searching a different song.`); 
-             console.log(error); 
-         } 
-
+smd({
+   pattern: "apks",
+   alias: ["apksearch"],
+   desc: "Search App",
+   category: "search",
+   filename: __filename,
+   use: "<Search Query>"
+ }, async (_0x19d516, _0x1cb962) => {
+   try {
+     if (!_0x1cb962) {
+       return await _0x19d516.reply("*_Uhh pLease, give me app name!_*");
+     }
+     const _0x4ac8f2 = await search(_0x1cb962);
+     if (_0x4ac8f2.length) {
+       let _0x3d85b = await download(_0x4ac8f2[0].id);
+       let _0x307e6f = "*X-bot • ᴀᴘᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪsᴛ* \n*________________________________* \n\n*_Reply Any Number To Download._*\n_Results For : " + _0x1cb962 + "_ \n";
+       for (let _0x5a5920 = 0; _0x5a5920 < _0x4ac8f2.length; _0x5a5920++) {
+         _0x307e6f += "\n*" + (_0x5a5920 + 1) + " : " + _0x4ac8f2[_0x5a5920].name + "* \n*Id : " + _0x4ac8f2[_0x5a5920].id + "* \n";
+       }
+       return await _0x19d516.sendMessage(_0x19d516.chat, {
+         image: {
+           url: _0x3d85b.icon
+         },
+         caption: _0x307e6f
+       }, {
+         quoted: _0x19d516
+       });
+     } else {
+       return _0x19d516.reply("*_APP not Found, Try Other Name_*");
+     }
+   } catch (_0xa7fd60) {
+     _0x19d516.error(_0xa7fd60 + "\n\ncommand: apks", _0xa7fd60);
    }
-   )
+ });
 
     //---------------------------------------------------------------------------
 smd({
