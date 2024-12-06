@@ -136,7 +136,7 @@ smd(
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.data.result} ${response.data.data || "Unknown error"}_*`
+          `*_Error: ${response.result.result} ${response.result.result || "Unknown error"}_*`
         );
       }
 
