@@ -148,8 +148,8 @@ smd({
         const _0x509920 = _0x2cc463.data;
         console.log("API Response:", _0x509920);
 
-        if (_0x509920.status && _0x509920.result.url) {
-          const _0x539170 = _0x509920.audio.url;
+        if (_0x509920.status && _0x509920.data.url) {
+          const _0x539170 = _0x509920.data.url;
           
           // Download the mp3 file
           const _0x3ce5d2 = await axios({
