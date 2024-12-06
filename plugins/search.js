@@ -159,7 +159,7 @@ smd({
      if (!_0x1cb962) {
        return await _0x19d516.reply("*_Uhh pLease, give me app name!_*");
      }
-     const _0x4ac8f2 = await search(_0x1cb962);
+     const _0x4ac8f2 = await fetch(_0x1cb962);
      if (_0x4ac8f2.length) {
        let _0x3d85b = await download(_0x4ac8f2[0].id);
        let _0x307e6f = "*X-bot • ᴀᴘᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪsᴛ* \n*________________________________* \n\n*_Reply Any Number To Download._*\n_Results For : " + _0x1cb962 + "_ \n";
