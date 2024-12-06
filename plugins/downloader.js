@@ -38,7 +38,7 @@ const path = require ("path");
 
       if (response.data.status !== "success") {
         return await m.send(
-          `*_Error: ${response.status.result} ${response.status.result || "Unknown error"}_*`
+          `*_Error: ${response.data.code} ${response.status.message || "Unknown error"}_*`
         );
       }
 
@@ -743,15 +743,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://itzpire.com/download/tiktok?url=${encodeURIComponent(videoUrl)}&type=v2`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "true" && data.data.hdVideo) {
-      const videoDownloadUrl = data.data.hdVideo; // Extract the video URL from the 'hdVideo' field
+    if (data.status === "success" && data.data.video) {
+      const videoDownloadUrl = data.data.video; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
