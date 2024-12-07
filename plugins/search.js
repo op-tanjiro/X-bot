@@ -276,7 +276,7 @@ smd(
 
       const data = await response.json();
 
-      if (data.status !== 200) {
+      if (data.status !== "success") {
         return await m.send("*_An error occurred while fetching the data._*");
       }
 
@@ -382,7 +382,7 @@ text +="\n*Match Ended:* " + dat.data[i].matchEnded;
 //---------------------------------------------------------------------------
 smd({
             pattern: "google",
-            alias :['search','gsearch'],
+            alias :['gs','gsearch'],
             category: "search",
             desc: "Sends info of given query from Google Search.",
             use: '<text>',
