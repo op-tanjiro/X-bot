@@ -138,7 +138,7 @@ smd({
       'caption': "\n*-X-:bot • ᴍᴜꜱɪᴄ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n*Title :* " + _0x4f86cb.title + "\n*Url :* " + _0x4f86cb.url + "\n*Description :* " + _0x4f86cb.timestamp + "\n*Views :* " + _0x4f86cb.views + "\n*Uploaded :* " + _0x4f86cb.ago + "\n*Author :* " + _0x4f86cb.author.name + "\n\n> POWERED BY DAVID -X 🗿..._\n"
     });
     // Use the new API to get download links
-    const downloadApiUrl = `https://api.fgmods.xyz/api/downloader/yta?url= + ${encodeURIComponent(url)}&apikey=g5PtmjBW`;
+    const downloadApiUrl = `https://api.fgmods.xyz/api/downloader/yta?url=${encodeURIComponent(url)}&apikey=g5PtmjBW`;
     
         
     let _0x4acf6c = 3; // Retry logic
