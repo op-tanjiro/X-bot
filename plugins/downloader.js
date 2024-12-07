@@ -149,7 +149,7 @@ smd(
         public_gists,
         followers,
         following,
-        created_at,
+        ceated_at,
         updated_at,
       } = response.data.data;
 
@@ -162,7 +162,7 @@ smd(
 *Public Gists:* ${public_gists}
 *Followers:* ${followers}
 *Following:* ${following}
-*Account Created:* ${created_at}
+*Account Created:* ${ceated_at}
 *Last Updated:* ${updated_at}
 
 \t*-X-:bot GitHub STALKER*
