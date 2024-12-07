@@ -105,15 +105,15 @@ smd({
     const videoUrl = _0x4ec99f; // Video URL
 
     // Call the video downloader API
-    const apiUrl = `https://api.fgmods.xyz/api/downloader/xvideosdl?url=${encodeURIComponent(videoUrl)}&apikey=g5PtmjBW`;
+    const apiUrl = `https://api.giftedtech.my.id/api/download/xnxxdl?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.true && data.result && data.result && data.result.url_dl) {
-      const videoDownloadUrl = data.result.url_dl; // Extract the low-quality video URL
+    if (data.success && data.result && data.result.files && data.result.files.high) {
+      const videoDownloadUrl = data.result.files.high; // Extract the low-quality video URL
 
       // Download the video file
       const videoResponse = await axios({
