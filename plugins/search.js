@@ -72,6 +72,51 @@ async(message, match) => {
 
           }catch(e){return await message.error(`${e}\n\n command: github`,e,`*_Didn't get any results, Sorry!_*`) }
    })
+ smd ({
+    pattern: "meme",
+    desc: "Get meme.",
+    category: "search",
+    filename: __filename,
+    use: "<song_name>",
+  },
+  async (m, songName) => {
+    try {
+      if (!songName) {
+        return await m.send("*_Please say something!_*");
+      }
+
+      const apiUrl = `https://itzpire.com/tools/generate-meme?prompt=${encodeURIComponent(
+        songName
+      )}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.status !== "success") {
+        return await m.send("*_An error occurred while fetching the data._*");
+      }
+
+      const { memeText, visualDescription } = data.text;
+
+      const lyricsMessage =`
+*Meme:* ${memeText}
+
+${visualDescription}
+`;
+
+      await m.send(lyricsMessage);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: meme`, e);
+    }
+  }
+);
+     
 
 //------------------------------------------------------------------------------------
 smd({
@@ -378,6 +423,49 @@ text +="\n*Match Ended:* " + dat.data[i].matchEnded;
 }catch(e){return await message.error(`${e}\n\n command: cric`,e,`*_Uhh dear, Didn't get any results!_*`) }
 
 })
+   smd({
+    pattern: "html",
+    desc: "Get the code replay.",
+    category: "search",
+    filename: __filename,
+    use: "<prompt>",
+  },
+  async (m, songName) => {
+    try {
+      if (!songName) {
+        return await m.send("*_Please provide a prompt!_*");
+      }
+
+      const apiUrl = `https://itzpire.com/tools/generate-pageHtml?prompt=${encodeURIComponent(
+        songName
+      )}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.status !== "success") {
+        return await m.send("*_An error occurred while fetching the data._*");
+      }
+
+      const { result } = data.result;
+
+      const lyricsMessage =`
+${result}
+`;
+
+      await m.send(lyricsMessage);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: html`, e);
+    }
+  }
+);
+          
 
 //---------------------------------------------------------------------------
 smd({
