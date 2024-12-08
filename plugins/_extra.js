@@ -245,8 +245,7 @@ smd(
       const cleanedCode = encryptedCode.replace(/^\`\`\`|\`\`\`$/g, '').trim();
 
       // Send the obfuscated code as a message
-      const message = `${result}`;
-
+      
       await m.send(message);
     } catch (e) {
       await m.error(`${e}\n\ncommand: encode`, e);
