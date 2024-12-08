@@ -225,7 +225,7 @@ smd(
       // Send loading message
       await m.send("🌀 _Obfuscating your code... Please wait._ 🌀");
 
-      const apiUrl = `https://api.giftedtech.my.id/api/tools/encrypt?apikey=gifted&code=${encodeURIComponent(code)}`;
+      const apiUrl = `https://itzpire.com/tools/obfuscater?code=${encodeURIComponent(code)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -235,7 +235,7 @@ smd(
       }
 
       const data = await response.json();
-      const encryptedCode = data.encrypted_code;
+      const encryptedCode = data.result;
       
       if (!encryptedCode) {
         return await m.send("Error: Unable to obfuscate the code.");
@@ -245,7 +245,7 @@ smd(
       const cleanedCode = encryptedCode.replace(/^\`\`\`|\`\`\`$/g, '').trim();
 
       // Send the obfuscated code as a message
-      const message = `${cleanedCode}`;
+      const message = `${result}`;
 
       await m.send(message);
     } catch (e) {
