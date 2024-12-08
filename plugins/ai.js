@@ -97,6 +97,51 @@ smd(
     }
   }
 );
+
+smd(
+  {
+    pattern: "html",
+    react: "🚀",
+    desc: "Get a response from Bing html based on user query.",
+    category: "ai",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a query, e.g., `html + text`.");
+      }
+
+      // Send a loading message
+      await m.send("-X-:bot is thinking 🤔");
+
+      // Define the API URL
+      const apiUrl = `https://itzpire.com/tools/generate-pageHtml?prompt=${encodeURIComponent(query)}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      // Wait for 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Get the result from the API response
+      const data = await response.json();
+      const resultText = data.result; // Extract the text from the result part
+      const message = `*Response:* \n\n${resultText}`;
+
+      // Send the final response
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: html`, e);
+    }
+  }
+);
 smd({
   pattern: "rmbg",
   desc: "Upload an image, remove background, and send the processed image back.",
