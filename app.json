@@ -9,7 +9,7 @@
     "env": {
       "OWNER_NAME": {
         "description": "Name for Bot Owner",
-        "value": "X-bot",
+        "value": "X",
         "required": true
       },
   
@@ -20,7 +20,7 @@
       },
       "USER_IMAGES": {
         "description": "Menu Images",
-        "value": "https://telegra.ph/file/b065f0f673cae5452c358.jpg",
+        "value": "https://d.uguu.se/ttFlkCaG.jpg",
         "required": false
       },
   
@@ -40,7 +40,7 @@
       "BOT_NAME": {
         "description": " NAME FOR BOT",
         "required": false,
-        "value": "Platinum-V1"
+        "value": "X-bot"
       },
       "TZ": {
         "description": "Put TIME_ZONE according to your location",
@@ -65,7 +65,7 @@
       "HEROKU_API_KEY": {
         "description": "Put Your Heroku Api Key Here",
         "value": "",
-        "required": true
+        "required": false
       },
       "HEROKU_APP_NAME": {
         "description": "Put Your Heroku App Name Here",
@@ -111,7 +111,7 @@
       },
       "MODE": {
         "description": "Worktype of your bot. Use public or private, if it is private then only bot number can use it. If public then everyone can use it.",
-        "value": "public"
+        "value": "private"
       },
       "PACK_NAME": {
         "description": "Put Sticker Pack_Name.",
