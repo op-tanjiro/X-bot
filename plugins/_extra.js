@@ -225,7 +225,7 @@ smd(
       // Send loading message
       await m.send("🌀 _Obfuscating your code... Please wait._ 🌀");
 
-      const apiUrl = `https://itzpire.com/tools/obfuscater?code=${encodeURIComponent(code)}`;
+      const apiUrl = `https://api.giftedtech.my.id/api/tools/encrypt?apikey=gifted&code=${encodeURIComponent(code)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -235,7 +235,7 @@ smd(
       }
 
       const data = await response.json();
-      const encryptedCode = data.result;
+      const encryptedCode = data.encrypted_code;
       
       if (!encryptedCode) {
         return await m.send("Error: Unable to obfuscate the code.");
@@ -245,7 +245,8 @@ smd(
       const cleanedCode = encryptedCode.replace(/^\`\`\`|\`\`\`$/g, '').trim();
 
       // Send the obfuscated code as a message
-      
+      const message = `${encrypted_code}`;
+    
       await m.send(message);
     } catch (e) {
       await m.error(`${e}\n\ncommand: encode`, e);
@@ -391,7 +392,7 @@ smd({
   cmdname: "ss",
   alias: ["webss", "fullss"],
   type: "misc",
-  info: "get randome poetry lines"
+  info: "get screenshots of a site"
 }, async (_0x4cdec8, _0x41dfb5) => {
   try {
     let _0x587b99 = _0x41dfb5.split(" ")[0].trim();
