@@ -192,40 +192,7 @@ ${Lyrics}
 );
 
            
-smd({
-   pattern: "apks",
-   alias: ["apksearch"],
-   desc: "Search App",
-   category: "search",
-   filename: __filename,
-   use: "<Query>"
- }, async (_0x19d516, _0x1cb962) => {
-   try {
-     if (!_0x1cb962) {
-       return await _0x19d516.reply("*_Uhh pLease, give me app name!_*");
-     }
-     const _0x4ac8f2 = await fetch(_0x1cb962);
-     if (_0x4ac8f2.length) {
-       let _0x3d85b = await download(_0x4ac8f2[0].id);
-       let _0x307e6f = "*X-bot • ᴀᴘᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪsᴛ* \n*________________________________* \n\n*_Reply Any Number To Download._*\n_Results For : " + _0x1cb962 + "_ \n";
-       for (let _0x5a5920 = 0; _0x5a5920 < _0x4ac8f2.length; _0x5a5920++) {
-         _0x307e6f += "\n*" + (_0x5a5920 + 1) + " : " + _0x4ac8f2[_0x5a5920].name + "* \n*Id : " + _0x4ac8f2[_0x5a5920].id + "* \n";
-       }
-       return await _0x19d516.sendMessage(_0x19d516.chat, {
-         image: {
-           url: _0x3d85b.icon
-         },
-         caption: _0x307e6f
-       }, {
-         quoted: _0x19d516
-       });
-     } else {
-       return _0x19d516.reply("*_APP not Found, Try Other Name_*");
-     }
-   } catch (_0xa7fd60) {
-     _0x19d516.error(_0xa7fd60 + "\n\ncommand: apks", _0xa7fd60);
-   }
- });
+
 
     //---------------------------------------------------------------------------
 smd({
@@ -423,48 +390,7 @@ text +="\n*Match Ended:* " + dat.data[i].matchEnded;
 }catch(e){return await message.error(`${e}\n\n command: cric`,e,`*_Uhh dear, Didn't get any results!_*`) }
 
 })
-   smd({
-    pattern: "html",
-    desc: "Get the code replay.",
-    category: "search",
-    filename: __filename,
-    use: "<prompt>",
-  },
-  async (m, songName) => {
-    try {
-      if (!songName) {
-        return await m.send("*_Please provide a prompt!_*");
-      }
-
-      const apiUrl = `https://itzpire.com/tools/generate-pageHtml?prompt=${encodeURIComponent(
-        songName
-      )}`;
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        return await m.send(
-          `*_Error: ${response.status} ${response.statusText}_*`
-        );
-      }
-
-      const data = await response.json();
-
-      if (data.status !== "success") {
-        return await m.send("*_An error occurred while fetching the data._*");
-      }
-
-      const { result } = data.result;
-
-      const lyricsMessage =`
-${result}
-`;
-
-      await m.send(lyricsMessage);
-    } catch (e) {
-      await m.error(`${e}\n\ncommand: html`, e);
-    }
-  }
-);
+   
           
 
 //---------------------------------------------------------------------------
