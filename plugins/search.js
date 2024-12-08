@@ -77,11 +77,11 @@ async(message, match) => {
     desc: "Get meme.",
     category: "search",
     filename: __filename,
-    use: "<song_name>",
+    use: "<prompt>",
   },
-  async (m, songName) => {
+  async (m, prompt) => {
     try {
-      if (!songName) {
+      if (!prompt) {
         return await m.send("*_Please say something!_*");
       }
 
@@ -104,13 +104,12 @@ async(message, match) => {
 
       const { memeText, visualDescription } = data.text;
 
-      const lyricsMessage =`
+      const dataMessage =`
 *Meme:* ${memeText}
-
-${visualDescription}
+*VisualDescription:* ${visualDescription}
 `;
 
-      await m.send(lyricsMessage);
+      await m.send(dataMessage);
     } catch (e) {
       await m.error(`${e}\n\ncommand: meme`, e);
     }
