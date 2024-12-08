@@ -72,49 +72,7 @@ async(message, match) => {
 
           }catch(e){return await message.error(`${e}\n\n command: github`,e,`*_Didn't get any results, Sorry!_*`) }
    })
- smd ({
-    pattern: "meme",
-    desc: "Get meme.",
-    category: "search",
-    filename: __filename,
-    use: "<prompt>",
-  },
-  async (m, prompt) => {
-    try {
-      if (!prompt) {
-        return await m.send("*_Please say something!_*");
-      }
-
-      const apiUrl = `https://itzpire.com/tools/generate-meme?prompt=${encodeURIComponent(
-        songName
-      )}`;
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        return await m.send(
-          `*_Error: ${response.status} ${response.statusText}_*`
-        );
-      }
-
-      const data = await response.json();
-
-      if (data.status !== "success") {
-        return await m.send("*_An error occurred while fetching the data._*");
-      }
-
-      const { memeText, visualDescription } = data.text;
-
-      const dataMessage =`
-*Meme:* ${memeText}
-*VisualDescription:* ${visualDescription}
-`;
-
-      await m.send(dataMessage);
-    } catch (e) {
-      await m.error(`${e}\n\ncommand: meme`, e);
-    }
-  }
-);
+ 
      
 
 //------------------------------------------------------------------------------------
