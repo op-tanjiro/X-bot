@@ -397,7 +397,7 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
- 
+    if (data.status === "true" && result.result.sd) {
       const videoDownloadUrl = result.result.sd;  // Extract the low-quality video URL
 
       // Download the video file
