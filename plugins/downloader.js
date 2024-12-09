@@ -314,7 +314,7 @@ let {
       return await m.send(`*_Error: ${data.status} - ${data.message || "Unknown error"}_*`);
     }
 
-    const mediaData = data.data;  // Assuming the API response contains media data in 'data'
+    const mediaData = data.result;  // Assuming the API response contains media data in 'data'
     
     if (!mediaData) {
       return await m.send("*_No media found!_*");
@@ -393,7 +393,7 @@ smd({
     const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
-    const data = response.data;
+    const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
@@ -461,12 +461,12 @@ smd({
     const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
-    const data = response.data;
+    const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === "true" && data.result.hd) {
-      const videoDownloadUrl = data.result.hd;  // Extract the video URL from the 'video_hd' field
+    if (data.status !== 200 && data.result.hd_video) {
+      const videoDownloadUrl = data.result.hd_video;  // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
