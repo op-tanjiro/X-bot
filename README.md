@@ -1,7 +1,7 @@
 # 🌟 X-bot 🌟
 
 <p align="center">
-  <img src="https://f.uguu.se/KzWJaMCY.jpg" alt="X-bot Banner" width="450" style="border-radius: 15px;"/>
+  <img src="https://d.uguu.se/RwLaCVBz.jpg" alt="X-bot Banner" width="450" style="border-radius: 15px;"/>
 </p>
 
 <p align="center">
