@@ -458,15 +458,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl1?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== 200 && data.result.hd_video) {
-      const videoDownloadUrl = data.result.hd_video;  // Extract the video URL from the 'video_hd' field
+    if (data.status !== "true" && data.result.hdLink) {
+      const videoDownloadUrl = data.result.hdLink;  // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -793,6 +793,74 @@ smd({
   } catch (_0x86b411) {
     console.error("Caught Error:", _0x86b411); // Log any caught errors
     return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl", _0x86b411, "*_Error occurred while processing the command!!_*");
+  }
+});
+smd({
+  pattern: "tokdl", // Command name remains 'fb'
+  alias: ["tkdl"],
+  desc: "Downloads video from a Tiktok link.",
+  category: "downloader",
+  filename: __filename,
+  use: "<Tiktok video URL>"
+}, async (_0x2c2023, _0x4ec99f) => {
+  try {
+    if (!_0x4ec99f) {
+      return await _0x2c2023.reply("*_Provide a TikTok video URL_*");
+    }
+
+    const videoUrl = _0x4ec99f; // Tiktok video URL
+
+    // Call the Tiktok downloader API
+    const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
+
+    const response = await axios.get(apiUrl);
+    const data = response.result;
+
+    console.log("API Response:", data); // Log the API response for debugging
+
+    if (data.status === "true" && data.result.hdVideo) {
+      const videoDownloadUrl = data.result.hdVideo; // Extract the video URL from the 'Video' field
+
+      // Download the video file
+      const videoResponse = await axios({
+        url: videoDownloadUrl,
+        method: 'GET',
+        responseType: 'stream'
+      });
+
+      // Create a temporary file path for the video
+      const tempFilePath = path.join(__dirname, `${Date.now()}.mp4`);
+      const writer = fs.createWriteStream(tempFilePath);
+
+      // Pipe the video stream to the file
+      videoResponse.data.pipe(writer);
+
+      // Handle completion of file writing
+      await new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+      });
+
+      console.log(`Video saved to ${tempFilePath}`);
+
+      // Send the video file to the user in normal quality
+      await _0x2c2023.bot.sendMessage(_0x2c2023.jid, {
+        video: { url: tempFilePath },
+        caption: 'Here is your downloaded video',
+        fileName: `${Date.now()}.mp4`,
+        mimetype: "video/mp4"
+      }, { quoted: _0x2c2023 });
+
+      // Optionally, delete the temporary file after sending
+      fs.unlinkSync(tempFilePath);
+      
+    } else {
+      console.log("Error: Could not retrieve the video download URL, API response:", data);
+      await _0x2c2023.reply("*_Error: Could not retrieve the video download URL. Please try again later!_*");
+    }
+  } catch (_0x86b411) {
+    console.error("Caught Error:", _0x86b411); // Log any caught errors
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl2", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
  smd({
