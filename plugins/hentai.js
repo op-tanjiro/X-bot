@@ -171,7 +171,7 @@ smd({
         caption: "*---Random corn arrived---*"
       }, {
         quoted: _0x5c07ae
-      }, "video", _0x4cf39c);
+      }, "image", _0x4cf39c);
     } else {
       await _0x5c07ae.send("*_Request Failed, corn not be fetched!_*");
     }
