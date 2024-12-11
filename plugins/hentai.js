@@ -158,7 +158,7 @@ smd({
   }
 });
   smd({
-     cmdname: "corn",
+   pattern: "corn",
   info: "To get Random corn vid",
   type: "anime",
   filename: __filename
