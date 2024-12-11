@@ -818,7 +818,7 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== true && data.video.noWatermark) {
+    if ( data.video.noWatermark) {
       const videoDownloadUrl = data.video.noWatermark; // Extract the video URL from the 'Video' field
 
       // Download the video file
