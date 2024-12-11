@@ -304,7 +304,7 @@ smd({
        const data = await response.json();
        const question = data.results[0].question;
        
-       await message.send(`*Random Question:* ${data}`, { quoted: message.data });
+       await message.send(`*Random Question:* "data"`, { quoted: message.data });
    } catch (error) {
        console.error('Error fetching random question:', error);
        await message.send('_Failed to fetch a random question._', { quoted: message.data });
