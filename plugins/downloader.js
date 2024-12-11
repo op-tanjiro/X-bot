@@ -811,14 +811,14 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://bk9.fun/download/tiktok2?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.giftedtech.my.id/api/download/tiktokdlv1?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if ( data.video.noWatermark) {
+    if (data.status !== 200 && data.video.noWatermark) {
       const videoDownloadUrl = data.video.noWatermark; // Extract the video URL from the 'Video' field
 
       // Download the video file
