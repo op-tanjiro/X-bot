@@ -293,6 +293,25 @@ smd({
 });
 
 
+  smd({
+    pattern: 'vcc',
+   fromMe: false,
+   desc: 'Get a random cc',
+   type: 'fun'
+}, async (message, match) => {
+   try {
+       const response = await fetch('https://itzpire.com/random/vcc?cardType=MasterCard');
+       const data = await response.json();
+       const question = data.results[0].question;
+       
+       await message.send quoted: message.data });
+   } catch (error) {
+       console.error('Error fetching random vcc:', error);
+       await message.send('_Failed to fetch a random vcc._', { quoted: message.data });
+   }
+});
+
+
 
 
 
