@@ -27,7 +27,7 @@ smd(
       }
 
       // Send a loading message
-      await m.send("-X-:bot is thinking 🤔");
+      await m.send(".....");
 
       // Define the API URL
       const apiUrl = `https://www.dark-yasiya-api.site/ai/chatgpt?q=${encodeURIComponent(query)}`;
@@ -115,7 +115,7 @@ smd(
       }
 
       // Send a loading message
-      await m.send("-X-:bot is thinking 🤔");
+      await m.send("....");
 
       // Define the API URL
       const apiUrl = `https://itzpire.com/tools/generate-pageHtml?prompt=${encodeURIComponent(query)}`;
@@ -226,7 +226,7 @@ smd({
     }
   } catch (e) {
     console.error(e);
-    await m.error(`${e}\n\ncommand: fgh`, e);
+    await m.error(`${e}\n\ncommand: rmbg`, e);
   }
 });
 smd(
@@ -602,7 +602,7 @@ smd(
         const data = await response.json();
 
         // Check if the status in the response data is not 200
-        if (data.status !== 200) {
+        if (data.status !== "success") {
           return await m.send("*_An error occurred while fetching the data._*");
         }
 
