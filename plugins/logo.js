@@ -1,5 +1,5 @@
-const { smd, prefix, Config } = require('../lib');
-const fetch = require('node-fetch');
+const { smd, prefix, Config } = require("../lib");
+const fetch = require("node-fetch");
 
 async function textToLogoGenerator(message, textProUrl, text1, text2 = "ser", serviceType = "textpro", retryOnFail = true) {
   let mumakerResponse = {};
