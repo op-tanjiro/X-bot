@@ -1,4 +1,4 @@
-const { smd } = require("../lib/plugins");
+const { smd } = require("../lib/adams");
 var mumaker = require("mumaker");
 smd({ pattern: "hacker",
     categorie: "Logo", reaction: "👨🏿‍💻" }, async (origineMessage, zk, commandeOptions) => {
