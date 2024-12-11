@@ -1,6 +1,6 @@
-const { adams } = require("../Ibrahim/adams");
+const { smd } = require("../lib/plugins");
 var mumaker = require("mumaker");
-adams({ nomCom: "hacker",
+smd({ pattern: "hacker",
     categorie: "Logo", reaction: "👨🏿‍💻" }, async (origineMessage, zk, commandeOptions) => {
     const { prefixe, arg, ms, repondre } = commandeOptions;
     if (!arg || arg == "") {
@@ -15,13 +15,13 @@ adams({ nomCom: "hacker",
         // console.log("&€"+res);
       //  let lien = "https://e1.yotools.net" + res;
         repondre("* processing...*");
-        await zk.sendMessage(origineMessage, { image: { url:anu.image}, caption: "* \t Logo by bmw-Md*" }, { quoted: ms });
+        await zk.sendMessage(origineMessage, { image: { url:anu.image}, caption: "* \t Logo by X-bot*" }, { quoted: ms });
     }
     catch (e) {
         repondre("🥵🥵 " + e);
     }
 });
-adams({ nomCom: "dragonball", categorie: "Logo", reaction: "🐉" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "dragonball", categorie: "Logo", reaction: "🐉" }, async (dest, zk, commandeOptions) => {
     let { arg, repondre, prefixe, ms } = commandeOptions;
     try {
         const noArgMsg = `*_EXEMPLE *:  ${prefixe}dragonball Ibrahim adams`;
@@ -46,7 +46,7 @@ adams({ nomCom: "dragonball", categorie: "Logo", reaction: "🐉" }, async (dest
     }
 });
 ////////////////////////////
-adams({ nomCom: "naruto", categorie: "Logo", reaction: "⛩" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "naruto", categorie: "Logo", reaction: "⛩" }, async (dest, zk, commandeOptions) => {
     let { ms, arg, repondre, prefixe } = commandeOptions;
     try {
         if (!arg || arg == '') {
@@ -88,7 +88,7 @@ adams({ nomCom: "naruto", categorie: "Logo", reaction: "⛩" }, async (dest, zk,
 */
 
 
-adams({ nomCom: "didong", categorie: "Logo", reaction: "📱" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "didong", categorie: "Logo", reaction: "📱" }, async (dest, zk, commandeOptions) => {
     let { arg, repondre, prefixe, ms } = commandeOptions;
    try {
      var titre = "\t* logo by Bmw-Md*";
@@ -111,7 +111,7 @@ adams({ nomCom: "didong", categorie: "Logo", reaction: "📱" }, async (dest, zk
 );
 
 
-adams({nomCom : "wall",categorie : "Logo",reaction : "👍"} , async (dest,zk,commandeOptions) =>{
+smd({pattern : "wall",categorie : "Logo",reaction : "👍"} , async (dest,zk,commandeOptions) =>{
 
   const {arg,repondre,ms,prefixe} = commandeOptions;
   if(!arg[0]) { repondre( `Exemple of using commande:\n ${prefixe}wall BMW-MD` ); return ;}
@@ -124,7 +124,7 @@ adams({nomCom : "wall",categorie : "Logo",reaction : "👍"} , async (dest,zk,co
 })
 
 ;
-adams({nomCom: "summer", categorie: "Logo", reaction: "🌞"}, async (dest, zk, commandeOptions) => {
+smd({pattern: "summer", categorie: "Logo", reaction: "🌞"}, async (dest, zk, commandeOptions) => {
   const { arg, repondre, ms, prefixe } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}summer My text`);
@@ -139,7 +139,7 @@ adams({nomCom: "summer", categorie: "Logo", reaction: "🌞"}, async (dest, zk, 
     .catch(console.error);
 });
 
-adams({nomCom: "neonlight", categorie: "Logo", reaction: "💡"}, async (dest, zk, commandeOptions) => {
+smd({pattern: "neonlight", categorie: "Logo", reaction: "💡"}, async (dest, zk, commandeOptions) => {
   const { arg, repondre, ms, prefixe } = commandeOptions;
   /*if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}neonlight My text`);
@@ -166,7 +166,7 @@ adams({nomCom: "neonlight", categorie: "Logo", reaction: "💡"}, async (dest, z
 
 });
 
-adams({nomCom: "greenneon", categorie: "Logo", reaction: "🟢"}, async (dest, zk, commandeOptions) => {
+smd({pattern: "greenneon", categorie: "Logo", reaction: "🟢"}, async (dest, zk, commandeOptions) => {
   const { arg, repondre, ms, prefixe } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}greenneon My text`);
@@ -181,7 +181,7 @@ adams({nomCom: "greenneon", categorie: "Logo", reaction: "🟢"}, async (dest, z
     .catch(console.error);
 });
 
-adams({nomCom: "glitch", categorie: "Logo", reaction: "🎛️"}, async (dest, zk, commandeOptions) => {
+smd({pattern: "glitch", categorie: "Logo", reaction: "🎛️"}, async (dest, zk, commandeOptions) => {
   const { arg, repondre, ms, prefixe } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}glitch My text`);
@@ -196,7 +196,7 @@ adams({nomCom: "glitch", categorie: "Logo", reaction: "🎛️"}, async (dest, z
     .catch(console.error);
 });
 
-adams({nomCom: "devil", categorie: "Logo", reaction: "😈"}, async (dest, zk, commandeOptions) => {
+smd({pattern: "devil", categorie: "Logo", reaction: "😈"}, async (dest, zk, commandeOptions) => {
   const { arg, repondre, ms, prefixe } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}devil My text`);
@@ -211,8 +211,8 @@ adams({nomCom: "devil", categorie: "Logo", reaction: "😈"}, async (dest, zk, c
     .catch(console.error);
 });
 ////////////////////
-adams(
-  {nomCom:"boom",categorie:
+smd(
+  {pattern:"boom",categorie:
     "Logo",reaction:"💥"},async(dest,zk,commandeOptions)=>{
 
     let {ms,repondre,prefixe,arg}=commandeOptions;
@@ -254,7 +254,7 @@ repondre("  processing ...")
     }
 )
 //water
-adams({nomCom:"water",categorie:"Logo",reation:"💦"},async(dest,zk,commandeOptions)=>{
+smd({pattern:"water",categorie:"Logo",reation:"💦"},async(dest,zk,commandeOptions)=>{
 
   
 var {ms,repondre,arg,prefixe}=commandeOptions;
@@ -272,7 +272,7 @@ var {ms,repondre,arg,prefixe}=commandeOptions;
 
 });
 
-adams({ nomCom: "snow", categorie: "Logo", reaction: "❄️" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "snow", categorie: "Logo", reaction: "❄️" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}Snow My text`);
@@ -289,7 +289,7 @@ adams({ nomCom: "snow", categorie: "Logo", reaction: "❄️" }, async (dest, zk
     });
 });
 
-adams({ nomCom: "transformer", categorie: "Logo", reaction: "🤖" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "transformer", categorie: "Logo", reaction: "🤖" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}Transformer My text`);
@@ -306,7 +306,7 @@ adams({ nomCom: "transformer", categorie: "Logo", reaction: "🤖" }, async (des
     });
 });
 
-adams({ nomCom: "thunder", categorie: "Logo", reaction: "⚡" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "thunder", categorie: "Logo", reaction: "⚡" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}Thunder My text`);
@@ -323,7 +323,7 @@ adams({ nomCom: "thunder", categorie: "Logo", reaction: "⚡" }, async (dest, zk
     });
 });
 
-adams({ nomCom: "harrypotter", categorie: "Logo", reaction: "🧙‍♂️" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "harrypotter", categorie: "Logo", reaction: "🧙‍♂️" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}HarryPotter My text`);
@@ -340,7 +340,7 @@ adams({ nomCom: "harrypotter", categorie: "Logo", reaction: "🧙‍♂️" }, a
     });
 });
 
-adams({ nomCom: "cat", categorie: "Logo", reaction: "🪟" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "cat", categorie: "Logo", reaction: "🪟" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}FoggyWindow My text`);
@@ -359,7 +359,7 @@ adams({ nomCom: "cat", categorie: "Logo", reaction: "🪟" }, async (dest, zk, c
 
                                                                          
 
-adams({ nomCom: "whitegold", categorie: "Logo", reaction: "💫" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "whitegold", categorie: "Logo", reaction: "💫" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}WhiteGold My text`);
@@ -376,7 +376,7 @@ adams({ nomCom: "whitegold", categorie: "Logo", reaction: "💫" }, async (dest,
     });
 });
 
-adams({ nomCom: "lightglow", categorie: "Logo", reaction: "🌟" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "lightglow", categorie: "Logo", reaction: "🌟" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}LightGlow My text`);
@@ -393,7 +393,7 @@ adams({ nomCom: "lightglow", categorie: "Logo", reaction: "🌟" }, async (dest,
     });
 });
 
-adams({ nomCom: "thor", categorie: "Logo", reaction: "🔨" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "thor", categorie: "Logo", reaction: "🔨" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}Thor My text`);
@@ -410,7 +410,7 @@ adams({ nomCom: "thor", categorie: "Logo", reaction: "🔨" }, async (dest, zk, 
     });
 });
 
-adams({ nomCom: "neon", categorie: "Logo", reaction: "💡" }, async (dest, zk, commandeOptions) => {
+smd({ pattern: "neon", categorie: "Logo", reaction: "💡" }, async (dest, zk, commandeOptions) => {
   const { arg, ms, prefixe,repondre } = commandeOptions;
   if (!arg[0]) {
     repondre(`Exemple of using commande:\n ${prefixe}Neon My text`);
@@ -429,7 +429,7 @@ adams({ nomCom: "neon", categorie: "Logo", reaction: "💡" }, async (dest, zk, 
 
 
 
-adams({nomCom:"purple",categorie:"Logo",reaction:"🧳"},async(dest,zk,commandeOptions)=>{
+smd({pattern:"purple",categorie:"Logo",reaction:"🧳"},async(dest,zk,commandeOptions)=>{
   var {ms,repondre,prefixe,arg}=commandeOptions;
   
     try{
@@ -444,7 +444,7 @@ adams({nomCom:"purple",categorie:"Logo",reaction:"🧳"},async(dest,zk,commandeO
   
 })
 
-adams({nomCom:"gold",categorie:"Logo",reaction:"🧚🏿‍♀️"},async(dest,zk,commandeOptions)=>{
+smd({pattern:"gold",categorie:"Logo",reaction:"🧚🏿‍♀️"},async(dest,zk,commandeOptions)=>{
 
 
   let {ms,arg,prefixe,repondre}=commandeOptions;
@@ -463,7 +463,7 @@ adams({nomCom:"gold",categorie:"Logo",reaction:"🧚🏿‍♀️"},async(dest,z
 })
 
 
-adams({nomCom:"arena",categorie:"Logo",reaction:"🥵"},async(dest,zk,commandeOptions)=>{
+smd({pattern:"arena",categorie:"Logo",reaction:"🥵"},async(dest,zk,commandeOptions)=>{
 
 
   let {ms,arg,prefixe,repondre}=commandeOptions;
@@ -481,7 +481,7 @@ adams({nomCom:"arena",categorie:"Logo",reaction:"🥵"},async(dest,zk,commandeOp
   }catch(e){repondre(e)}
 })
 
-adams({nomCom:"incandescent",categorie:"Logo",reaction:"😋"},async(dest,zk,commandeOptions)=>{
+smd({pattern:"incandescent",categorie:"Logo",reaction:"😋"},async(dest,zk,commandeOptions)=>{
 
 
   let {ms,arg,prefixe,repondre}=commandeOptions;
