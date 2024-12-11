@@ -157,3 +157,26 @@ smd({
     return _0x2c2023.error(_0x86b411 + "\n\ncommand: xdl", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
+  smd({
+     cmdname: "corn",
+  info: "To get Random corn vid",
+  type: "anime",
+  filename: __filename
+}, async _0x5c07ae => {
+  try {
+    const _0x2b9570 = await (await fetch("https://www.dark-yasiya-api.site/download/henati"))?.json();
+    const _0x4cf39c = _0x2b9570?.urls?.regular || false;
+    if (_0x4cf39c) {
+      await _0x5c07ae.sendUi(_0x5c07ae.jid, {
+        caption: "*---Random corn arrived---*"
+      }, {
+        quoted: _0x5c07ae
+      }, "video", _0x4cf39c);
+    } else {
+      await _0x5c07ae.send("*_Request Failed, corn not be fetched!_*");
+    }
+  } catch (_0x27f4a6) {
+    return await _0x5c07ae.error(_0x27f4a6 + "\n\ncmdName: corn\n");
+  }
+});
+  
