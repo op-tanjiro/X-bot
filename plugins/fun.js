@@ -291,23 +291,7 @@ smd({
        await message.send('_Failed to fetch message._', { quoted: message.data });
    }
 });
-smd({
-   pattern: 'vcc',
-   fromMe: true,
-   desc: 'Get a nice message',
-   type: 'fun'
-}, async (message, match) => {
-   try {
-       const response = await fetch('https://itzpire.com/random/vcc?cardType=MasterCard');
-       const data = await response.json();
-       const messageText = `${data[0].q} — ${data[0].a}`;
-       
-       await message.send(messageText, { quoted: message.data });
-   } catch (error) {
-       console.error('Error fetching message:', error);
-       await message.send('_Failed to fetch message._', { quoted: message.data });
-   }
-});
+
 
 
 
