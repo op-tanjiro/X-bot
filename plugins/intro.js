@@ -2,7 +2,7 @@
 
 // Fork And Edit AS You Wish //
 
-const { smd, Config,smdBuffer,  prefix } = require('../lib')
+const { smd, Config,smdBuffer,  prefix } = require("../lib")
 
 
 var surl = 'https://github.com/Mek-d1/X-bot' // Source URL
