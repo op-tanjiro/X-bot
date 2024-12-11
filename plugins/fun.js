@@ -293,10 +293,9 @@ smd({
 });
 
 
-  smd({
-    pattern: 'vcc',
+  smd({   pattern: 'vcc',
    fromMe: false,
-   desc: 'Get a random cc',
+   desc: 'Get a random question',
    type: 'fun'
 }, async (message, match) => {
    try {
@@ -306,8 +305,8 @@ smd({
        
        await message.send quoted: message.data });
    } catch (error) {
-       console.error('Error fetching random vcc:', error);
-       await message.send('_Failed to fetch a random vcc._', { quoted: message.data });
+       console.error('Error fetching random question:', error);
+       await message.send('_Failed to fetch a random question._', { quoted: message.data });
    }
 });
 
