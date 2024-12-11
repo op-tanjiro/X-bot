@@ -293,7 +293,7 @@ smd({
 });
 smd({
    pattern: 'vcc',
-   fromMe: false,
+   fromMe: true,
    desc: 'Get a nice message',
    type: 'fun'
 }, async (message, match) => {
