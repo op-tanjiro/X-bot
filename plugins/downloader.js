@@ -67,6 +67,86 @@ const path = require ("path");
 );
 smd(
   {
+    pattern: "ipstalk",
+    desc: "Get information about an IP address.",
+    category: "misc",
+    filename: __filename,
+    use: "<ip_address>",
+  },
+  async (m, ipAddress) => {
+    try {
+      if (!ipAddress) {
+        return await m.send("*_Please provide an IP address!_*");
+      }
+
+      const apiUrl = `https://bk9.fun/stalk/ip?q=${encodeURIComponent(
+        ipAddress
+      )}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.status === true) {
+        return await m.send("*_An error occurred while fetching the data._*");
+      }
+
+      const {
+        continent,
+        country,
+        countryCode,
+        regionName,
+        city,
+        zip,
+        lat,
+        lon,
+        timezone,
+        currency,
+        isp,
+        org,
+        as,
+        reverse,
+        mobile,
+        proxy,
+        hosting,
+        ip,
+      } = data.BK9;
+
+      const caption = `
+*IP Address Information*
+
+*IP Address:* ${ip}
+*Reverse DNS:* ${reverse}
+*Continent:* ${continent}
+*Country:* ${country} (${countryCode})
+*Region:* ${regionName}
+*City:* ${city}
+*ZIP Code:* ${zip}
+*Latitude:* ${lat}
+*Longitude:* ${lon}
+*Timezone:* ${timezone}
+*Currency:* ${currency}
+*ISP:* ${isp}
+*Organization:* ${org}
+*AS:* ${as}
+*Mobile:* ${mobile ? "Yes" : "No"}
+*Proxy:* ${proxy ? "Yes" : "No"}
+*Hosting:* ${hosting ? "Yes" : "No"}
+`;
+
+      await m.send(caption);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: ipstalk`, e);
+    }
+  }
+);
+smd(
+  {
     pattern: "igstalk",
     desc: "Get information about an Instagram user.",
     category: "stalker",
