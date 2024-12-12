@@ -15,7 +15,7 @@ const {
 } = require("../lib/plugins");
 cmd({
   'pattern': "privacy",
-  'desc': "send ptv Message of video",
+  'desc': "checks the Whatsapp privacy settings",
   'category': "whatsapp",
   'filename': __filename
 }, async (_0x1de00b, _0x3a059e, {
@@ -81,7 +81,7 @@ smd({
 }, async (_0x142a55, _0x46608a) => {
   try {
     if (!_0x46608a) {
-      return await _0x142a55.send("*_provide text to update profile status!_*\n*_Example: " + prefix + "bio Suhail Md_*");
+      return await _0x142a55.send("*_provide text to update profile status!_*\n*_Example: " + prefix + "bio X-bot_*");
     }
     await _0x142a55.bot.updateProfileStatus(_0x46608a);
     _0x142a55.send("*Profile status updated successfully!*");
