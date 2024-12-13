@@ -97,6 +97,50 @@ smd(
     }
   }
 );
+smd(
+  {
+    pattern: "xgpt",
+    react: "🗿",
+    desc: "Get a response from Gemini AI based on user query.",
+    category: "ai",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a query, e.g., `.gemini What is the weather today?`.");
+      }
+
+      // Send a loading message
+      await m.send("processing.....");
+
+      // Define the new API URL
+      const apiUrl = `https://bk9.fun/ai/BK9?BK9=you%20are%20x%20made%20by%20David&q=${encodeURIComponent(query)}&model=gpt-4o`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      // Wait for 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Get the result from the API response
+      const data = await response.json();
+      const resultText = data.BK9; // Extract the text from the result part
+      const message = `*Response:* \n\n${resultText}`;
+
+      // Send the final response
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: dave-ai`, e);
+    }
+  }
+);
 
 smd(
   {
@@ -350,6 +394,50 @@ smd(
 );
 smd(
   {
+    pattern: "llama",
+    react: "📡",
+    desc: "Get a response from Llama AI based on user query.",
+    category: "ai",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a query, e.g., `.llama What is the weather today?`.");
+      }
+
+      // Send a loading message
+      await m.send("processing.....");
+
+      // Define the new API URL
+      const apiUrl = `https://bk9.fun/ai/llama?q=${encodeURIComponent(query)}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      // Wait for 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Get the result from the API response
+      const data = await response.json();
+      const resultText = data.BK9; // Extract the text from the result part
+      const message = `*Response:* \n\n${resultText}`;
+
+      // Send the final response
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: llama`, e);
+    }
+  }
+);
+smd(
+  {
     pattern: "gemini",
     react: "📡",
     desc: "Get a response from Gemini AI based on user query.",
@@ -368,7 +456,7 @@ smd(
       await m.send("processing.....");
 
       // Define the new API URL
-      const apiUrl = `https://api.giftedtech.my.id/api/ai/geminiaipro?apikey=gifted&q=${encodeURIComponent(query)}`;
+      const apiUrl = `https://bk9.fun/ai/acloudai?q=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -382,7 +470,7 @@ smd(
 
       // Get the result from the API response
       const data = await response.json();
-      const resultText = data.result; // Extract the text from the result part
+      const resultText = data.BK9; // Extract the text from the result part
       const message = `*Response:* \n\n${resultText}`;
 
       // Send the final response
