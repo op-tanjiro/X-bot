@@ -69,7 +69,7 @@ smd(
   {
     pattern: "ipstalk",
     desc: "Get information about an IP address.",
-    category: "misc",
+    category: "stalker",
     filename: __filename,
     use: "<ip_address>",
   },
@@ -169,11 +169,11 @@ smd(
       }
 
       const {
+        profile,
         username: tkUsername,
         name,
         bio,
         likes,
-        profile,
         followers,
         following,
         desc
