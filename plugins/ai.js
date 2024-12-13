@@ -1051,7 +1051,7 @@ smd(
       await m.send("Processing......");
 
       // Define the API URL
-      const apiUrl = `https://itzpire.com/ai/blackbox-ai?q=${encodeURIComponent(query)}`;
+      const apiUrl = `https://bk9.fun/ai/blackbox?q=${encodeURIComponent(query)}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -1065,7 +1065,7 @@ smd(
 
       // Get the result from the API response
       const data = await response.json();
-      const resultText = data.result; // Extract the text from the result part
+      const resultText = data.BK9; // Extract the text from the result part
       const message = `*Response:* \n\n${resultText}`;
 
       // Send the final response
