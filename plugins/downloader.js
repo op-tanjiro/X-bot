@@ -181,7 +181,7 @@ smd(
 
       const caption = `
 *Tiktok User Information*
-            ${profile}
+
 *Username:* ${username}
 *Name:* ${name}
 *Bio:* ${bio || "NO BIO"}
