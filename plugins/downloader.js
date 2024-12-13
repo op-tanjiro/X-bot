@@ -877,7 +877,7 @@ smd({
 });
 smd({
   pattern: "tokdl", // Command name remains 'fb'
-  alias: ["tkdl"],
+  alias: ["tkvidl"],
   desc: "Downloads video from a Tiktok link.",
   category: "downloader",
   filename: __filename,
@@ -891,15 +891,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://api.giftedtech.my.id/api/download/tiktokdlv1?apikey=gifted&url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.fgmods.xyz/api/downloader/tiktok?url=${encodeURIComponent(videoUrl)}&apikey=g5PtmjBW`;
 
     const response = await axios.get(apiUrl);
     const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== 200 && data.video.noWatermark) {
-      const videoDownloadUrl = data.video.noWatermark; // Extract the video URL from the 'Video' field
+    if (data.status !== true && data.result.play) {
+      const videoDownloadUrl = data.result.play; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -943,6 +943,7 @@ smd({
     return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl2", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
+
  smd({
    pattern: "ytdoc",
    alias: ["ytd"],
