@@ -147,6 +147,61 @@ smd(
 );
 smd(
   {
+    pattern: "tkstalk",
+    desc: "Get information about a Tiktok user.",
+    category: "stalker",
+    filename: __filename,
+    use: "<username>",
+  },
+  async (m, username) => {
+    try {
+      if (!username) {
+        return await m.send("*_Please provide a valid tiktok username!_*");
+      }
+
+      const apiUrl = `https://bk9.fun/stalk/tiktok?q=${encodeURIComponent(username)}`;
+      const response = await axios.get(apiUrl);
+
+      if (response.data.status !== true) {
+        return await m.send(
+          `*_Error: ${response.data.code} ${response.data.message || "Unknown error"}_*`
+        );
+      }
+
+      const {
+        username: tkUsername,
+        name,
+        bio,
+        likes,
+        profile,
+        followers,
+        following,
+        desc
+      } = response.data.BK9;
+
+      const caption = `
+*Tiktok User Information*
+            ${profile}
+*Username:* ${username}
+*Name:* ${name}
+*Bio:* ${bio || "NO BIO"}
+
+*Likes:* ${likes}
+*Followers:* ${followers}
+*Following:* ${following}
+*Description:* ${desc}
+
+\t*-X-:bot TK STALKER*
+`;
+
+      await m.send(caption);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: tkstalk`, e);
+    }
+  }
+);
+smd(
+  {
     pattern: "igstalk",
     desc: "Get information about an Instagram user.",
     category: "stalker",
