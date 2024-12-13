@@ -194,7 +194,7 @@ smd(
 \t*-X-:bot TK STALKER*
 `;
 
-      await m.bot.sendFromUrl(m.from, profile, caption, m, {}, "image");
+      await m.send(caption);
     } catch (e) {
       await m.error(`${e}\n\ncommand: tkstalk`, e);
     }
