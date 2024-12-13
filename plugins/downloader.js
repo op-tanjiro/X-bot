@@ -898,7 +898,7 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status === true && data.result.play) {
+    if (data.code !== 200 && data.result.play) {
       const videoDownloadUrl = data.result.play; // Extract the video URL from the 'Video' field
 
       // Download the video file
