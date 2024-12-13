@@ -212,7 +212,7 @@ const questions = [
 // Command implementation
 smd(
   {
-    cmdname: "questiongame",
+    cmdname: "qgame",
     desc: "Sends a random question from a list of fun and spicy questions.",
     react: "🔥",
     type: "game",
