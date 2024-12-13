@@ -395,6 +395,49 @@ smd(
 );
 smd(
   {
+    pattern: "aoyo",
+    desc: "Get a response from aoyo AI based on user query.",
+    category: "ai",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a query, e.g., `.aoyo who is Naruto?`.");
+      }
+
+      // Send a loading message
+      await m.send("Relax, almost there.....");
+
+      // Define the new API URL
+      const apiUrl = `https://bk9.fun/ai/Aoyo?q=${encodeURIComponent(query)}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      // Wait for 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Get the result from the API response
+      const data = await response.json();
+      const resultText = data.BK9; // Extract the text from the result part
+      const message = `*Response:* \n\n${resultText}`;
+
+      // Send the final response
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: ayoyo`, e);
+    }
+  }
+);
+smd(
+  {
     pattern: "lumin",
     react: "📡",
     desc: "Get a response from Lumine AI based on user query.",
