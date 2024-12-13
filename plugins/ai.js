@@ -101,7 +101,7 @@ smd(
   {
     pattern: "xgpt",
     react: "🗿",
-    desc: "Get a response from Gemini AI based on user query.",
+    desc: "Get a response from X AI based on user query.",
     category: "ai",
     filename: __filename,
   },
@@ -110,7 +110,7 @@ smd(
       // Extract the query from the message
       const query = m.text.split(' ').slice(1).join(' ');
       if (!query) {
-        return await m.send("Please provide a query, e.g., `.gemini What is the weather today?`.");
+        return await m.send("Please provide a query, e.g., `.xgpt What is the weather today?`.");
       }
 
       // Send a loading message
@@ -141,6 +141,51 @@ smd(
     }
   }
 );
+smd(
+  {
+    pattern: "jeeves",
+    react: "📡",
+    desc: "Get a response from Jeeves AI based on user query.",
+    category: "ai",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a query, e.g., `.jeeves What is the meaning of life?`.");
+      }
+
+      // Send a loading message
+      await m.send("processing......");
+
+      // Define the new API URL
+      const apiUrl = `https://bk9.fun/ai/jeeves-chat2?q=${encodeURIComponent(query)}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      // Wait for 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Get the result from the API response
+      const data = await response.json();
+      const resultText = data.BK9; // Extract the text from the result part
+      const message = `*Response:* \n\n${resultText}`;
+
+      // Send the final response
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: jeeves`, e);
+    }
+  }
+);
+
 
 smd(
   {
