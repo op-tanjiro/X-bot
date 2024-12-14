@@ -87,7 +87,7 @@ smd(
     } catch (e) {
       // Log the error and send an error message to the user
       console.error(e);
-      await m.error(`${e}\n\ncommand:  nai`, e);
+      await m.error(`${e}\n\ncommand:  x-bot-ai`, e);
     }
   }
 );
@@ -122,23 +122,35 @@ cmd({
   filename: __filename,
   desc: "image to url.",
   use: "<video | image>"
-}, async _0x4e4351 => {
+}, async _0xbda24 => {
   try {
-    let _0x680da4 = pmtypes.includes(_0x4e4351.mtype) ? _0x4e4351 : _0x4e4351.reply_message;
-    if (!_0x680da4 || !pmtypes.includes(_0x680da4?.mtype)) {
-      return _0x4e4351.reply("*_Uhh Dear, Reply To An Image/Video!_*");
+    // Add audio to the types of media you want to handle
+    let pmtypes = ["imageMessage", "videoMessage", "audioMessage"];
+    let _0x7d6de1 = pmtypes.includes(_0xbda24.mtype) ? _0xbda24 : _0xbda24.reply_message;
+    
+    if (!_0x7d6de1 || !pmtypes.includes(_0x7d6de1?.mtype)) {
+      return _0xbda24.reply("*_Uhh Dear, Reply To An Image/Video/Audio!_*");
     }
-    let _0x349452 = await _0x4e4351.bot.downloadAndSaveMediaMessage(_0x680da4);
-    let _0x536aa6 = await createUrl(_0x349452);
-    if (!_0x536aa6) {
-      return _0x4e4351.reply("*_Failed To Create Url!_*");
-    }
+    
+    // Download and save the media (image, video, or audio)
+    let _0xeb95de = await _0xbda24.bot.downloadAndSaveMediaMessage(_0x7d6de1);
+    let _0x3e1ea8 = await createUrl(_0xeb95de, "uguMashi");
+
     try {
-      fs.unlink(_0x349452);
-    } catch {}
-    await _0x4e4351.send(util.format(_0x536aa6), {}, "asta", _0x680da4);
-  } catch (_0x2ee8cc) {
-    await _0x4e4351.error(_0x2ee8cc + "\n\ncommand url", _0x2ee8cc);
+      fs.unlink(_0xeb95de);  // Delete the saved file after processing
+    } catch (e) {
+      console.log("Error deleting file:", e);
+    }
+
+    if (!_0x3e1ea8 || !_0x3e1ea8.url) {
+      return _0xbda24.reply("*_Failed To Create Url!_*");
+    }
+    
+    // Send the URL to the user
+    await _0xbda24.send(util.format(_0x3e1ea8.url), {}, "asta", _0x7d6de1);
+
+  } catch (_0x1a2f02) {
+    await _0xbda24.error(_0x1a2f02 + "\n\ncommand url", _0x1a2f02);
   }
 });
 cmd({
