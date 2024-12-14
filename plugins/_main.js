@@ -339,6 +339,43 @@ smd({
     await _0x51c639.error(_0x102a1d + "\n\ncommand: cpu", _0x102a1d, "*_No responce from Server side, Sorry!!_*");
   }
 });
+smd(
+  {
+    pattern: "stats",
+    alias: ["about", "info"],
+    desc: "To check bot status",
+    category: "user",
+    filename: __filename,
+  },
+  async (_0x397531) => {
+    try {
+      const _0x2d09cb = process.uptime();
+      timestampe = speed();
+      latensie = speed() - timestampe;
+      let _0x53eb40 = (
+        " *I am " +
+        Config.botname +
+        "*\n  *❲❒❳ About:* A Simple WhatsApp Bot Created By *" +
+        Config.ownername +
+        "*.\n\n  *❲❒❳ Speed:* " +
+        latensie.toFixed(4) +
+        " ms\n  *❲❒❳ Uptime:* " +
+        runtime(process.uptime()) +
+        "\n  *❲❒❳ Version:* " +
+        Config.VERSION +
+        "\n  *❲❒❳ Owner:*  " +
+        Config.ownername +
+        "\n\n  *❲❒❳ Channel:* _" +
+        gurl +
+        "_ \n" +
+        (Config.caption ? "\n\n" + Config.caption : "")
+      ).trim();
+      return await _0x397531.bot.sendUi(_0x397531.jid, {
+        caption: _0x53eb40,
+      });
+    } catch {}
+  }
+);
 smd({
   pattern: "advt",
   alias: ["advertisement"],
