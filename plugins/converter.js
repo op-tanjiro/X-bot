@@ -57,7 +57,7 @@ smd({
         pack: Config.packname,
         author: Config.author,
         type: StickerTypes.FULL,
-        quality: 10
+        quality: 50
       };
       await generateSticker(_0x5f0a63, _0x313fc1, _0x37d0ee);
       return _0x313fc1 = false;
