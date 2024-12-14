@@ -116,7 +116,7 @@ smd({ on: "status" }, async (message, text) => {
 });
 smd(
   {
-    cmdname: "him",
+    cmdname: "intro",
     desc: "him",
     react: "🚶🏾‍♂️",
     type: "misc",
@@ -126,20 +126,7 @@ smd(
     try {
       await m.send(
         "https://i.imgur.com/XkoFoW1.jpeg",
-        { caption: "*══ ━ ━ ━ ━ • ━ ━ ━ ━ ═══♡᭄
-│       「 DAVID-X 𝐓𝐄𝐂𝐇 𝐈𝐍𝐓𝐑𝐎  」
-│ Name      : DAVID-X 
-│ Place       : LAGOS, NIGERIA
-│ Gender    :  𝐌𝐀𝐋𝐄
-│ Age          : nn
-│ education : urm 
-│ good vibes : 𝐒𝐓𝐀𝐘 𝐂𝐋𝐀𝐌
-│ Phone     : wa.me/2349133354644
-│ Youtube   : youtube.com/@Mek-d1
-│ GitHub    : https://github.com/Mek-d1 
-
-╰═══ ━ ━ ━ ━ • ━ ━ ━ ━ ═══♡᭄
-*" },
+        { caption: "*BORING LIFE UWU 😏*" },
         "img",
         m
       );
