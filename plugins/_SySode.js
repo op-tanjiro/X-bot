@@ -34,22 +34,31 @@ smd({
   _0x514d3c.reply("X-bot is restarting ♻️");
   _0x1912df("pm2 restart all");
 });
-smd({
-  cmdname: "plugins",
-  alias: ["plugin"],
-  type: "owner",
-  info: "Shows list of all externally installed modules",
-  fromMe: s_ser,
-  filename: __filename,
-  use: "<name>"
-}, async (_0x2a10d6, _0x2420b0) => {
-  try {
-    let _0x4e5e2e = await plugins(_0x2a10d6, "plugins", _0x2420b0);
-    return await _0x2a10d6.send(!_0x4e5e2e ? "*_There's no plugin install in " + Config.botname + "_*" : !_0x2420b0 ? "*All Installed Modules are:-*\n\n" + _0x4e5e2e : _0x4e5e2e);
-  } catch (_0x21e335) {
-    _0x2a10d6.error(_0x21e335 + " \n\ncmdName plugins\n");
-  }
-});
+smd(
+ {
+   cmdname: "plugins",
+   alias: ["plugin"],
+   type: "owner",
+   info: "Shows list of all externally installed modules",
+   fromMe: s_ser,
+   filename: __filename,
+   use: "<name>",
+ },
+ async (cld, pluginName) => {
+   try {
+     let installedPlugins = await plugins(cld, "plugins", pluginName);
+     return await cld.send(
+       !installedPlugins
+         ? "*_There's no plugin install in " + Config.botname + "_*"
+         : !pluginName
+         ? "*All Installed Modules are:-*\n\n" + installedPlugins
+         : installedPlugins
+     );
+   } catch (err) {
+     cld.error(err + " \n\ncmdName plugins\n");
+   }
+ }
+);
 smd({
   pattern: "remove",
   alias: ["uninstall"],
