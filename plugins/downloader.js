@@ -878,15 +878,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://api.siputzx.my.id/api/tiktok?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== true && data.data.urls) {
-      const videoDownloadUrl = data.data.urls; // Extract the video URL from the 'Video' field
+    if (data.status !== true && data.result.hdVideo) {
+      const videoDownloadUrl = data.result.hdVideo; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
