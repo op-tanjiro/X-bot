@@ -881,7 +881,7 @@ smd({
     const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
-    const data = response.data;
+    const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
