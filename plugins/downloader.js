@@ -878,15 +878,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.dreaded.site/api/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
-    const data = response.result;
+    const data = response.tiktok;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== true && data.result.hdVideo) {
-      const videoDownloadUrl = data.result.hdVideo; // Extract the video URL from the 'Video' field
+    if (data.status !== 200 && data.tiktok.video) {
+      const videoDownloadUrl = data.tiktok.video; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -1048,7 +1048,7 @@ smd({
          url: _0x59bbaa
        },
        mimetype: "audio/mpeg",
-       fileName: "X-bot-Md--" + _0x1d542b[1] + ".mp3",
+       fileName: "X-bot-Md" + _0x1d542b[1] + ".mp3",
        caption: Config.caption,
        contextInfo: _0x10e2fa
      };
