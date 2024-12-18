@@ -38,7 +38,7 @@ global.save_status_from = process.env.SAVE_STATUS_FROM || "";
 global.read_status_from = process.env.READ_STATUS_FROM || "2347013349642,234xxxxx";
 
 global.api_smd = "https://api-smd-1.vercel.app";
-global.scan = "https://x-bot-session.onrender.com/pair";
+global.scan = "https://x-bot-session-generator.onrender.com";
 
 global.SESSION_ID =
   process.env.SESSION_ID ||
@@ -48,7 +48,7 @@ module.exports = {
   HANDLERS: process.env.PREFIX || ".",
   BRANCH: process.env.BRANCH || "main",
   VERSION: process.env.VERSION || "1.0.0",
-  caption: process.env.CAPTION || "©-X-:bot",
+  caption: process.env.CAPTION || "©X-:bot",
   author: process.env.PACK_AUTHER || "X-bot",
   packname: process.env.PACK_NAME || "",
   botname: process.env.BOT_NAME || "X-bot",
