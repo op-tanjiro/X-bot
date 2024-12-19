@@ -4,6 +4,7 @@
 
 const { sinhalaSub } = require("mrnima-moviedl");
 const axios = require("axios");
+const cmd = require("../lib");
 
 // Command for searching and downloading movies
 cmd({
