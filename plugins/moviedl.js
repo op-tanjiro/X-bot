@@ -16,7 +16,7 @@ const { cmd } = require("../lib/plugins");
 const path = require ("path");
 
 cmd({
-  pattern: "sinhalasub",
+  pattern: "moviedl",
   alias: ["movie"],
   react: "📑",
   category: "download",
