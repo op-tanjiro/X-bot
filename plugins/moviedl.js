@@ -1,19 +1,7 @@
-const {
-  smd,
-  fetchJson,
-  astroJson,
-  fancytext,
-  yt,
-  getBuffer,
-  smdBuffer,
-  prefix,
-  Config,
-} = require("../lib");
 const { sinhalaSub } = require("mrnima-moviedl");
 const axios = require("axios");
 var videotime = 60000;
 const { cmd } = require("../lib/plugins");
-const path = require ("path");
 
 cmd({
   pattern: "moviedl",
