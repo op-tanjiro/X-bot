@@ -1,10 +1,13 @@
+// This plugin was created by David Cyril 
+
+// Don't Edit Or share without given me credits 
+
 const { sinhalaSub } = require("mrnima-moviedl");
 const axios = require("axios");
-var videotime = 60000;
-const { cmd } = require("../lib/plugins");
 
+// Command for searching and downloading movies
 cmd({
-  pattern: "moviedl",
+  pattern: "sinhalasub",
   alias: ["movie"],
   react: "📑",
   category: "download",
@@ -85,14 +88,14 @@ cmd({
 
               const selectedQuality = downloadLinks[qualityIndex - 1];
               const fileId = selectedQuality.link.split("/").pop();
-              const downloadUrl = `https://pixeldrain.com/api/file/${fileId}?download`;
+              const downloadUrl = `https://pixeldrain.com/api/file/${fileId}`;
 
               // Step 8: Send the file
               await bot.sendMessage(from, {
                 document: { url: downloadUrl },
                 mimetype: "video/mp4",
                 fileName: `${movieDetails.title} - ${selectedQuality.quality}.mp4`,
-                caption: `${movieDetails.title}\nQuality: ${selectedQuality.quality}\nPowered by X-bot`,
+                caption: `${movieDetails.title}\nQuality: ${selectedQuality.quality}\nPowered by SinhalaSub`,
               }, { quoted: qualityMessage });
             }
           });
