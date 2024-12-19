@@ -1,13 +1,22 @@
 // This plugin was created by David Cyril 
 
 // Don't Edit Or share without given me credits 
-
+const {
+  smd,
+  fetchJson,
+  astroJson,
+  fancytext,
+  yt,
+  getBuffer,
+  smdBuffer,
+  prefix,
+  Config,
+} = require("../lib");
 const { sinhalaSub } = require("mrnima-moviedl");
 const axios = require("axios");
-const { cmd } = require("../lib");
 
 // Command for searching and downloading movies
-cmd({
+smd({
   pattern: "sinhalasub",
   alias: ["movie"],
   react: "📑",
