@@ -52,6 +52,7 @@
       "moment-timezone": "^0.5.34",
       "mongoose": "^8.5.3",
       "mongodb":"^6.5.0",
+      "mrnima-moviedl": "1.0.0",
       "mumaker": "^2.0.0",
       "node-cron": "^3.0.0",
       "node-fetch": "^2.6.1",
