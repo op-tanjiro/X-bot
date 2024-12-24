@@ -2,9 +2,10 @@
     "name": "X-bot",
     "description": "Simple WhatsApp Bot",
     "logo": "https://f.uguu.se/KzWJaMCY.jpg",
-    "keywords": ["Mek-d1", "X-bot", "X-bot"],
-    "success_url": "/",
-    "stack": "container",
+    "keywords": ["bot","node","baileys","whatsapp"],
+     "repository":"https://github.com/ekitale/maths-project",
+  "succes_url":"/",
+  "stack":"heroku-24",
   
     "env": {
       "OWNER_NAME": {
@@ -125,12 +126,31 @@
       }
     },
 
-    "buildpacks": [
-        {
-            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
-        }
-     ],
-  "stack": "heroku-24"
+      "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ],
+
+  "formation": {
+                "worker": {
+                        "quantity": 1,
+                        "size": "basic"
+                }
+        },
+
+  "addons":[
+    {
+      "plan":"heroku-postgresql"
+    }
+  ]
 }
 
     
