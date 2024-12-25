@@ -100,4 +100,4 @@ SUPPORT CHANNEL: <a href="https://whatsapp.com/channel/0029VarIiQL5a24AU5ZCVV0G"
 
 ### Please Give One Star ✨ & [follow me to get notified of my updates 💗](https://github.com/Mek-d1/X-bot)
 
-<b>Version -> 2.0.0</b>
+<b>Version -> 1.0.0</b>
