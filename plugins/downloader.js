@@ -932,7 +932,7 @@ smd({
 });
 smd({
   pattern: "tokdl", // Command name remains 'fb'
-  alias: ["tkvidl"],
+  alias: ["tkvid"],
   desc: "Downloads video from a Tiktok link.",
   category: "downloader",
   filename: __filename,
@@ -946,21 +946,19 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const downloadApiUrl = "https://api.davidcyriltech.my.id/download/tiktok?url=" + encodeURIComponent(videoUrl);
-    
-    let _0x4acf6c = 3; // Retry logic
-    while (_0x4acf6c > 0) {
-      try {
-        const _0x2cc463 = await axios.get(downloadApiUrl);
-        const _0x509920 = _0x2cc463.data;
-        console.log("API Response:", _0x509920);
+    const apiUrl = `https://api.davidcyriltech.my.id/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
-        if (_0x509920.status && _0x509920.result.video) {
-          const _0x539170 = _0x509920.result.video;
-          
-          // Download the mp4 file
-          const videoResponse = await axios({
-        url: _0x539170,
+    const response = await axios.get(apiUrl);
+    const data = response.data;
+
+    console.log("API Response:", data); // Log the API response for debugging
+
+    if (_0x509920.status && _0x509920.result.video) {
+          const videoDownloadUrl = _0x509920.result.video; // Extract the video URL from the 'Video' field
+
+      // Download the video file
+      const videoResponse = await axios({
+        url: videoDownloadUrl,
         method: 'GET',
         responseType: 'stream'
       });
@@ -997,7 +995,7 @@ smd({
     }
   } catch (_0x86b411) {
     console.error("Caught Error:", _0x86b411); // Log any caught errors
-    return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl", _0x86b411, "*_Error occurred while processing the command!!_*");
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl2", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
 
