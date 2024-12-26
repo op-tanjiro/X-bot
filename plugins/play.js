@@ -382,13 +382,14 @@ smd({
     });
 
     // Use the new API to get download links
-    const downloadApiUrl = "https://api.davidcyriltech.my.id/youtube/mp4?url=" + encodeURIComponent(_0x4f86cb.url);
+
+const downloadApiUrl = "https://api.davidcyriltech.my.id/youtube/mp4?url=" + encodeURIComponent(youtubeUrl);
     
     let _0x4acf6c = 3; // Retry logic
     while (_0x4acf6c > 0) {
       try {
         const _0x2cc463 = await axios.get(downloadApiUrl);
-        const _0x509920 = _0x2cc463.result;
+        const _0x509920 = _0x2cc463.data;
         console.log("API Response:", _0x509920);
 
         if (_0x509920.status && _0x509920.result.downloadUrl) {
@@ -400,7 +401,7 @@ smd({
             'method': "GET",
             'responseType': "stream"
           });
-          const _0x239ef4 = path.join(__dirname, _0x4f86cb.title + ".mp4");
+          const _0x239ef4 = path.join(__dirname, _0x509920.result.title + ".mp4");
           const _0x49450f = fs.createWriteStream(_0x239ef4);
           _0x3ce5d2.data.pipe(_0x49450f);
 
@@ -416,7 +417,7 @@ smd({
             'video': {
               'url': _0x239ef4
             },
-            'fileName': _0x4f86cb.title + ".mp4",
+            'fileName': _0x509920.result.title + ".mp4",
             'mimetype': "video/mp4"
           }, {
             'quoted': _0x213b75
@@ -439,6 +440,6 @@ smd({
     }
   } catch (_0x3c9fcf) {
     console.error("Caught Error:", _0x3c9fcf);
-    return _0x213b75.error(_0x3c9fcf + "\n\ncommand: youtubevideo", _0x3c9fcf, "*_File not found!!_*");
+    return _0x213b75.error(_0x3c9fcf + "\n\ncommand: ytvideo", _0x3c9fcf, "*_File not found!!_*");
   }
 });
