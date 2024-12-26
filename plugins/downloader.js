@@ -959,51 +959,45 @@ smd({
           const _0x539170 = _0x509920.result.video;
           
           // Download the mp4 file
-          const _0x3ce5d2 = await axios({
-            'url': _0x539170,
-            'method': "GET",
-            'responseType': "stream"
-          });
-          const _0x239ef4 = path.join(__dirname, _0x509920.result.title + ".mp4");
-          const _0x49450f = fs.createWriteStream(_0x239ef4);
-          _0x3ce5d2.data.pipe(_0x49450f);
+          const videoResponse = await axios({
+        url: videoDownloadUrl,
+        method: 'GET',
+        responseType: 'stream'
+      });
 
-          await new Promise((_0x46fbcf, _0x176108) => {
-            _0x49450f.on("finish", _0x46fbcf);
-            _0x49450f.on("error", _0x176108);
-          });
-          
-          console.log("Video saved to " + _0x239ef4);
+      // Create a temporary file path for the video
+      const tempFilePath = path.join(__dirname, `${Date.now()}.mp4`);
+      const writer = fs.createWriteStream(tempFilePath);
 
-          // Send the video file
-          await _0x213b75.bot.sendMessage(_0x213b75.jid, {
-            'video': {
-              'url': _0x239ef4
-            },
-            'fileName': _0x509920.result.title + ".mp4",
-            'mimetype': "video/mp4"
-          }, {
-            'quoted': _0x213b75
-          });
-          
-          fs.unlinkSync(_0x239ef4); // Delete the file after sending
-          return;
-        } else {
-          console.log("Error: Could not download video, API response:", _0x509920);
-          await _0x213b75.reply("*_Error: Could not download the video. Please try again later!_*");
-          return;
-        }
-      } catch (_0x2b8c59) {
-        console.error("Retry Error:", _0x2b8c59);
-        _0x4acf6c--;
-        if (_0x4acf6c === 0) {
-          await _0x213b75.reply("*_Error: Could not download the video after multiple attempts. Please try again later!_*");
-        }
-      }
+      // Pipe the video stream to the file
+      videoResponse.data.pipe(writer);
+
+      // Handle completion of file writing
+      await new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+      });
+
+      console.log(`Video saved to ${tempFilePath}`);
+
+      // Send the video file to the user in normal quality
+      await _0x2c2023.bot.sendMessage(_0x2c2023.jid, {
+        video: { url: tempFilePath },
+        caption: 'Here is your downloaded video',
+        fileName: `${Date.now()}.mp4`,
+        mimetype: "video/mp4"
+      }, { quoted: _0x2c2023 });
+
+      // Optionally, delete the temporary file after sending
+      fs.unlinkSync(tempFilePath);
+      
+    } else {
+      console.log("Error: Could not retrieve the video download URL, API response:", data);
+      await _0x2c2023.reply("*_Error: Could not retrieve the video download URL. Please try again later!_*");
     }
-  } catch (_0x3c9fcf) {
-    console.error("Caught Error:", _0x3c9fcf);
-    return _0x213b75.error(_0x3c9fcf + "\n\ncommand: tiktokdl2", _0x3c9fcf, "*_File not found!!_*");
+  } catch (_0x86b411) {
+    console.error("Caught Error:", _0x86b411); // Log any caught errors
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: tiktokdl", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
 
