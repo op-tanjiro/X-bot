@@ -593,15 +593,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://bk9.fun/download/fb?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== "true" && data.result.hdLink) {
-      const videoDownloadUrl = data.result.hdLink;  // Extract the video URL from the 'video_hd' field
+   if (data.status && data.BK9.hd) {
+          const videoDownloadUrl = data.BK9.hd;  // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
