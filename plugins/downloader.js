@@ -953,8 +953,8 @@ smd({
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (_0x509920.status && _0x509920.result.video) {
-          const videoDownloadUrl = _0x509920.result.video; // Extract the video URL from the 'Video' field
+    if (data.status && data.result.video) {
+          const videoDownloadUrl = data.result.video; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -1048,7 +1048,7 @@ smd({
          url: _0x59bbaa
        },
        mimetype: "audio/mpeg",
-       fileName: "X-bot-Md" + _0x1d542b[1] + ".mp3",
+       fileName: "x-bot-Md" + _0x1d542b[1] + ".mp3",
        caption: Config.caption,
        contextInfo: _0x10e2fa
      };
