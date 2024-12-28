@@ -302,14 +302,55 @@ smd({
    try {
        const response = await fetch('https://itzpire.com/random/vcc?cardType=MasterCard');
        const data = await response.json();
-       const question = data.results[0].question;
+       const vcc = data.data.data;
        
-       await message.send(`*Random Question:* "data"`, { quoted: message.data });
+       await message.send(`*Random vcc:* ${vcc}`, { quoted: message.data });
    } catch (error) {
        console.error('Error fetching random question:', error);
-       await message.send('_Failed to fetch a random question._', { quoted: message.data });
+       await message.send('_Failed to fetch a random bcc._', { quoted: message.data });
    }
 });
+smd(
+  {
+    pattern: "quran",
+    desc: "Get a specific Quran verse based on user query.",
+    category: "fun",
+    filename: __filename,
+  },
+  async (m) => {
+    try {
+      // Extract the query from the message
+      const query = m.text.split(' ').slice(1).join(' ');
+      if (!query) {
+        return await m.send("Please provide a Quran verse reference, e.g., `.quran 3/2`.");
+      }
+
+      const apiUrl = `https://quranapi.pages.dev/api/${encodeURIComponent(query)}.json`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return await m.send(
+          `*_Error: ${response.status} ${response.statusText}_*`
+        );
+      }
+
+      const data = await response.json();
+      const {arabic1, english, ayahNo, surahNo, surahNameArabic, surahName} = data.data;
+       // This will be used as the subtitle (chapter/verse)
+      
+      // Structuring the message with reduced space
+      const message = `╔════════════════◇\n` +
+                      `║ *SURAH-NAME:* ${data.surahName}\n` +  // trim() removes any unnecessary whitespace
+                      `║ *✨SURAH-N-ARAB:* ${data.surahNameArabic}\n` +
+                      `║ *✨Author:* > Made By -X-:bot\n` +
+                      `╚════════════════◇`;
+
+      await m.send(message);
+    } catch (e) {
+      await m.error(`${e}\n\ncommand: quran`, e);
+    }
+  }
+);
 
 
 
