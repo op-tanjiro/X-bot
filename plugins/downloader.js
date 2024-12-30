@@ -435,35 +435,62 @@ let {
     if (!url) {
       return await m.send("*_Please provide an Instagram URL!_*");
     }
+  const videoUrl = _0x4ec99f; // Tiktok video URL
 
-    const apiUrl = `https://api.giftedtech.my.id/api/download/instadl?apikey=gifted&type=video&url=${encodeURIComponent(url)}`;
-    const response = await fetch(apiUrl);
-    
-    if (!response.ok) {
-      return await m.send(`*_Error: ${response.status} ${response.statusText}_*`);
+    // Call the Tiktok downloader API
+    const apiUrl = `https://api.davidcyriltech.my.id/instagram?url=${encodeURIComponent(videoUrl)}`;
+
+    const response = await axios.get(apiUrl);
+    const data = response.data;
+
+    console.log("API Response:", data); // Log the API response for debugging
+
+    if (data.status !== 200 && data.downloadUrl) {
+      const videoDownloadUrl = data.downloadUrl; // Extract the video URL from the 'Video' field
+
+      // Download the video file
+      const videoResponse = await axios({
+        url: videoDownloadUrl,
+        method: 'GET',
+        responseType: 'stream'
+      });
+
+      // Create a temporary file path for the video
+      const tempFilePath = path.join(__dirname, `${Date.now()}.mp4`);
+      const writer = fs.createWriteStream(tempFilePath);
+
+      // Pipe the video stream to the file
+      videoResponse.data.pipe(writer);
+
+      // Handle completion of file writing
+      await new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+      });
+
+      console.log(`Video saved to ${tempFilePath}`);
+
+      // Send the video file to the user in normal quality
+      await _0x2c2023.bot.sendMessage(_0x2c2023.jid, {
+        video: { url: tempFilePath },
+        caption: 'Here is your downloaded video',
+        fileName: `${Date.now()}.mp4`,
+        mimetype: "video/mp4"
+      }, { quoted: _0x2c2023 });
+
+      // Optionally, delete the temporary file after sending
+      fs.unlinkSync(tempFilePath);
+      
+    } else {
+      console.log("Error: Could not retrieve the video download URL, API response:", data);
+      await _0x2c2023.reply("*_Error: Could not retrieve the video download URL. Please try again later!_*");
     }
-
-    const data = await response.json();
-    
-    if (!data.status || data.status !== 200) {
-      return await m.send(`*_Error: ${data.status} - ${data.message || "Unknown error"}_*`);
-    }
-
-    const mediaData = data.result;  // Assuming the API response contains media data in 'data'
-    
-    if (!mediaData) {
-      return await m.send("*_No media found!_*");
-    }
-
-    const { thumbnail, url: mediaUrl, watermark } = mediaData; // Adjust keys based on API response structure
-    const caption = `*Watermark:* ${watermark ? watermark : "No watermark"}\n\n_Note: This media may have a watermark._`;
-
-    await m.bot.sendFromUrl(m.from, thumbnail, caption, m, {}, "image");
-    await m.bot.sendFromUrl(m.from, mediaUrl, "", m, {}, "video");
-  } catch (e) {
-    await m.error(`${e}\n\ncommand: instagram2`, e);
+  } catch (_0x86b411) {
+    console.error("Caught Error:", _0x86b411); // Log any caught errors
+    return _0x2c2023.error(_0x86b411 + "\n\ncommand: instagran", _0x86b411, "*_Error occurred while processing the command!!_*");
   }
 });
+    
  smd(
    {
      pattern: "wikimedia",
@@ -593,15 +620,15 @@ smd({
     const videoUrl = _0x4ec99f; // Facebook video URL
 
     // Call the Facebook downloader API
-    const apiUrl = `https://www.dark-yasiya-api.site/download/fbdl2?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.davidcyriltech.my.id/facebook?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
     const data = response.result;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-   if (data.status && data.result.hdLink) {
-          const videoDownloadUrl = data.result.hdLink;  // Extract the video URL from the 'video_hd' field
+   if (data.status && data.result.downloadUrl) {
+          const videoDownloadUrl = data.result.downloadUrl;  // Extract the video URL from the 'video_hd' field
 
       // Download the video file
       const videoResponse = await axios({
@@ -878,15 +905,15 @@ smd({
     const videoUrl = _0x4ec99f; // Tiktok video URL
 
     // Call the Tiktok downloader API
-    const apiUrl = `https://api.dreaded.site/api/tiktok?url=${encodeURIComponent(videoUrl)}`;
+    const apiUrl = `https://api.davidcyriltech.my.id/download/tiktok?url=${encodeURIComponent(videoUrl)}`;
 
     const response = await axios.get(apiUrl);
-    const data = response.tiktok;
+    const data = response.data;
 
     console.log("API Response:", data); // Log the API response for debugging
 
-    if (data.status !== 200 && data.tiktok.video) {
-      const videoDownloadUrl = data.tiktok.video; // Extract the video URL from the 'Video' field
+    if (data.status !== 200 && data.rrsult.video) {
+      const videoDownloadUrl = data.result.video; // Extract the video URL from the 'Video' field
 
       // Download the video file
       const videoResponse = await axios({
