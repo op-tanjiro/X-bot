@@ -8,7 +8,7 @@
   "stack":"heroku-24",
   
     "env": {
-      "OWNER_NAME": {op Tanjiro 
+      "OWNER_NAME": {
         "description": "Name for Bot Owner",
         "value": "X",
         "required": true
