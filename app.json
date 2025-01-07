@@ -8,7 +8,7 @@
   "stack":"heroku-24",
   
     "env": {
-      "OWNER_NAME": {
+      "OWNER_NAME": {op Tanjiro 
         "description": "Name for Bot Owner",
         "value": "X",
         "required": true
@@ -16,8 +16,8 @@
   
       "WELCOME": {
         "description": "put 'false' or 'true' to enable & disable WELCOME ",
-        "value": "false",
-        "required": false
+        "value": "true",
+        "required": true
       },
       "USER_IMAGES": {
         "description": "Menu Images",
@@ -27,8 +27,8 @@
   
       "GOODBYE": {
         "description": "put 'false' or 'true' to enable & disable GOODBYE ",
-        "value": "false",
-        "required": false
+        "value": "true",
+        "required": true
       },
       "MENU": {
         "description": "choose 1, 2, 3",
@@ -80,7 +80,7 @@
       },
       "AUTO_READ_STATUS": {
         "description": "Fill the value true if you want bot view your Statuses.",
-        "required": false,
+        "required": true,
         "value": "true"
       },
       "MSGS_IN_LOG": {
@@ -104,7 +104,7 @@
       },
       "OWNER_NUMBER": {
         "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-        "value": "2349133354644"
+        "value": "2348149250130"
       },
       "SESSION_ID": {
         "description": "put your SESSION_ID here.",
